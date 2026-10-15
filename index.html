@@ -9,14 +9,33 @@
   main { max-width: 640px; margin: 0 auto; padding: 72px 20px; }
   h1 { font-size: 34px; margin: 0 0 8px; }
   h1 span { color: #E8303F; }
-  p { color: #C8CCD2; }
+  h2 { font-size: 20px; margin: 40px 0 8px; }
+  p, li { color: #C8CCD2; }
   a { color: #fff; }
+  .btn { display: inline-block; margin: 8px 0 4px; padding: 14px 24px; border-radius: 999px; background: #CC152A;
+         color: #fff; font-weight: 700; text-decoration: none; }
+  .btn:hover { background: #E01B32; }
+  .note { font-size: 14px; color: #9CA3AF; }
 </style>
 </head>
 <body>
 <main>
   <h1>Ecza<span>Kod</span></h1>
   <p>İlaç karekodlarını telefon kamerasıyla topluca okutun, eczane programınıza otomatik yazılsın.</p>
+
+  <h2>Bilgisayar programı</h2>
+  <p>Eczane bilgisayarına kurun; telefon okuduğu kodları bu programa gönderir.</p>
+  <a class="btn" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a>
+  <p class="note">Her zaman en güncel sürüm iner. Windows 10/11, 64 bit. Eski sürümün üzerine kurulur; eşleşmiş telefonlar korunur.
+  Windows "bilinmeyen yayımcı" uyarısı verirse <b>Ek bilgi → Yine de çalıştır</b>.</p>
+
+  <h2>Kurulum</h2>
+  <ol>
+    <li>Programı indirip kurun. Saatin yanında EczaKod simgesi çıkar.</li>
+    <li>Telefona EczaKod uygulamasını kurun; telefon ve bilgisayar aynı Wi-Fi ağında olsun.</li>
+    <li>Simge → <b>Telefon eşleştir</b>; telefonda <b>Bilgisayar</b> sekmesinden QR kodu okutun.</li>
+  </ol>
+
   <p><a href="gizlilik.html">Gizlilik politikası</a></p>
 </main>
 </body>
