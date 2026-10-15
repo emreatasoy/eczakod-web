@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EczaKod Gizlilik Politikası</title>
+<style>
+  :root { --ink: #21252A; --muted: #6B7280; --brand: #CC152A; --bg: #F4F5F7; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 32px 0 8px; }
+  .muted { color: var(--muted); }
+  .card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+  li { margin: 4px 0; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>EczaKod Gizlilik Politikası</h1>
+    <p class="muted">Son güncelleme: 15 Ekim 2026</p>
+
+    <p>EczaKod mobil uygulaması ve EczaKod PC programı ("EczaKod"), eczanelerde ilaç kutularındaki karekod
+    ve barkodların okunup eczanenin kendi bilgisayarına aktarılması için tasarlanmıştır. Bu politika hangi
+    verilerin nasıl işlendiğini açıklar.</p>
+
+    <h2>Toplamadığımız veriler</h2>
+    <ul>
+      <li>Hasta, reçete veya sağlık bilgisi işlenmez.</li>
+      <li>Hesap, ad, telefon numarası, e-posta veya konum bilgisi istenmez.</li>
+      <li>Reklam, analitik ya da kullanım takibi yapılmaz; üçüncü taraf takip kütüphanesi yoktur.</li>
+      <li>Geliştiriciye ait bir sunucuya hiçbir veri gönderilmez.</li>
+    </ul>
+
+    <h2>Cihazda işlenen veriler</h2>
+    <ul>
+      <li><strong>Kamera görüntüsü:</strong> Karekod ve barkodları çözmek için yalnızca telefonda anlık işlenir;
+        kaydedilmez ve hiçbir yere gönderilmez.</li>
+      <li><strong>Okunan kodlar:</strong> Ürün numarası (GTIN), seri numarası, parti (lot) ve son kullanma
+        tarihi. Kullanıcının isteğiyle yalnızca eşleştirilmiş eczane bilgisayarına, yerel ağ üzerinden ve
+        şifreli (TLS) bağlantıyla gönderilir.</li>
+      <li><strong>Gönderim geçmişi:</strong> Bilgisayara yazılan son 300 kod, kontrol amacıyla yalnızca
+        telefonda saklanır; uygulama içinden silinebilir.</li>
+      <li><strong>Eşleştirme bilgisi:</strong> Eşleşilen bilgisayarın adı, yerel ağ adresi ve güvenli bağlantı
+        anahtarı telefonda saklanır.</li>
+    </ul>
+
+    <h2>İzinler</h2>
+    <ul>
+      <li><strong>Kamera:</strong> Karekod ve barkod okumak için.</li>
+      <li><strong>Ağ:</strong> Eczane bilgisayarıyla yerel ağ üzerinden haberleşmek için.</li>
+    </ul>
+
+    <h2>Verilerin silinmesi</h2>
+    <p>Tüm veriler kullanıcının kendi cihazlarında bulunur. Uygulamayı kaldırmak telefondaki verileri siler;
+    PC programını kaldırmak bilgisayardaki eşleşme kayıtlarını kullanıcı klasöründe bırakır ve bunlar
+    <code>%APPDATA%\EczaKod</code> klasörü silinerek kaldırılabilir.</p>
+
+    <h2>İletişim</h2>
+    <p>Sorularınız için: <a href="https://eczakod.com.tr">eczakod.com.tr</a></p>
+  </div>
+</main>
+</body>
+</html>
