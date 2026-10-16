@@ -1,4 +1,4 @@
-# Fiyat listesini 5 günde bir ilacfiyati.com'dan (site sahibinin izniyle) günceller ve yayınlar:
+# Fiyat listesini her gece ilacfiyati.com'dan (site sahibinin izniyle) günceller ve yayınlar:
 #   https://emreatasoy.github.io/eczakod-web/fiyat/fiyatlar.json
 #   https://emreatasoy.github.io/eczakod-web/fiyat/surum.json
 # Elle çalıştırmak: Actions → Fiyat listesi → Run workflow.
@@ -6,8 +6,8 @@ name: Fiyat listesi
 
 on:
   schedule:
-    # Ayın 1, 6, 11, 16, 21, 26 ve 31'inde 21:00 (TSİ) — yaklaşık 5 günde bir.
-    - cron: '0 18 */5 * *'
+    # Her gün 23:00 (TSİ = 20:00 UTC); site gece daha az yoğun. GitHub yoğunlukta birkaç dakika geciktirebilir.
+    - cron: '0 20 * * *'
   workflow_dispatch:
 
 permissions:
