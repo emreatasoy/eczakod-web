@@ -45,4 +45,6 @@ jobs:
           git add fiyat/fiyatlar.json fiyat/surum.json
           MSG=$(python -c 'import json;c=json.load(open("fiyat/surum.json"))["changes"];print("yeni %d, fiyatı değişen %d, çıkan %d" % (c["added"], c["priceChanged"], c["removed"]))')
           git commit -m "Fiyat listesi $(date +%Y-%m-%d): $MSG"
+          # Tarama sürerken repoya başka commit gelmiş olabilir (2 saat); üstüne alıp gönder.
+          git pull --rebase
           git push
