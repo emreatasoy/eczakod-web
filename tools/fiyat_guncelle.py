@@ -5,8 +5,9 @@
 - Yeni barkod → yeni kayıt (firstSeen bugün).
 - Var olan barkod → ad, firma, tür güncellenir; fiyat değiştiyse priceDate bugün olur.
 - Sitede fiyatsız görünen barkod → yürürlükten kalkmış sayılır, listeden çıkar.
-- Taramada hiç görünmeyen barkod → missingSince alanıyla GONE_DAYS gün daha tutulur (site geçici aksarsa liste
-  boşalmasın), sonra çıkar. Yeniden görünürse alan silinir.
+- Taramada hiç görünmeyen barkod (site kaldırdı ya da barkodu bozuk girildi) → listede son fiyatıyla kalır,
+  missingSince alanı ilk görünmediği günü tutar; yeniden görünürse alan silinir. Bu kayıtlar silinmez:
+  liste zamanla birikir, ileride başka bir fiyat kaynağına geçilse de elde kalır.
 Kayıtlara her çalışmada değişen alan yazılmaz; git farkında yalnızca gerçekten değişen ürünler görünür.
 Tarama eksik görünüyorsa (ürün sayısı birden düştüyse) hiçbir şey yazılmaz ve hata ile çıkılır.
 
@@ -22,7 +23,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'fiyat' / 'fiyatlar.json'
 VERSION_FILE = ROOT / 'fiyat' / 'surum.json'
-GONE_DAYS = 30
 MIN_RATIO = 0.9  # yeni taramadaki fiyatlı ürün sayısı öncekinin %90'ının altındaysa yayınlama
 KINDS = {'ilaclar': 'ilac', 'takviye-edici-gida': 'takviye', 'kozmetik': 'kozmetik'}
 
@@ -107,15 +107,14 @@ def main():
                 if k in prev:
                     item[k] = prev[k]
         items[barcode] = item
-    gone_limit = (dt.date.today() - dt.timedelta(days=GONE_DAYS)).isoformat()
     for barcode, prev in old.items():
         if barcode in items:
             continue
-        missing = prev.get('missingSince', today)
-        if barcode in unpriced or missing < gone_limit:
-            removed += 1  # fiyatsız (yürürlükten kalkmış) ya da uzun süredir yok
+        if barcode in unpriced:
+            removed += 1  # sitede fiyatsız: yürürlükten kalkmış
             continue
-        items[barcode] = {**prev, 'missingSince': missing}  # bu taramada görünmedi; bir süre daha tutulur
+        # Bu taramada görünmedi; son bilinen fiyatıyla kalır.
+        items[barcode] = {**prev, 'missingSince': prev.get('missingSince', today)}
 
     ordered = [items[k] for k in sorted(items)]
     kinds = {}
