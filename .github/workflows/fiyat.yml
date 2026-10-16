@@ -6,8 +6,8 @@ name: Fiyat listesi
 
 on:
   schedule:
-    # Her gün 23:00 (TSİ = 20:00 UTC); site gece daha az yoğun. GitHub yoğunlukta birkaç dakika geciktirebilir.
-    - cron: '0 20 * * *'
+    # Her gün 06:00 (TSİ = 03:00 UTC); eczaneler açılmadan liste güncel olsun. GitHub yoğunlukta geciktirebilir.
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
 permissions:
