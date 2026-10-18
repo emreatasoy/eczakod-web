@@ -1,15 +1,15 @@
 {
   "format": "eczakod-fiyat",
   "version": 1,
-  "listDate": "2026-10-17",
-  "generatedAt": "2026-10-17T11:09:30+03:00",
+  "listDate": "2026-10-18",
+  "generatedAt": "2026-10-18T11:23:31+03:00",
   "currency": "TRY",
-  "count": 23923,
+  "count": 23929,
   "sources": [
     {
       "name": "ILACFIYATI",
-      "listDate": "2026-10-17",
-      "count": 23923
+      "listDate": "2026-10-18",
+      "count": 23929
     }
   ],
   "items": [
@@ -3512,6 +3512,7 @@
     {"barcode":"8680080000415","name":"GLYZARDA 10 MG FİLM KAPLI TABLET (30 TABLET)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":822.48,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8680080000422","name":"GLYZARDA 25 MG FİLM KAPLI TABLET (30 TABLET)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":856.93,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8680080000545","name":"BRAVEX 200 MG YUMUSAK KAPSUL (20 KAPSUL)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":172.43,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
+    {"barcode":"8680080000637","name":"BRAVEX LIQUI-GELS 200 MG YUMUSAK KAPSUL (20 KAPSUL)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":172.43,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
     {"barcode":"8680080090799","name":"VIAMED 50 MG FILM KAPLI TABLET (4 TABLET)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":1338.54,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8680080090829","name":"VIAMED 100 MG FILM KAPLI TABLET (4 TABLET)","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":1570.16,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8680080150660","name":"SELKAP 200 MG 30 SERT KAPSÜL","firm":"World Medıcıne İlaçları Ltd. Şti.","kind":"ilac","price":151.68,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
@@ -11783,6 +11784,8 @@
     {"barcode":"8683955895079","name":"DR.WAGNER BUZZSPRAY VUCUT SPREYI 100 ml şişe","firm":"Letux Pharma İlaç Kimya Ve Gıda San.Tic.Ltd.Şti.","kind":"kozmetik","price":530.0,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683955895086","name":"DR. WAGNER IMMUFAST SIVI TAKVIYE EDICI SPREY 20 ml şişe","firm":"Letux Pharma İlaç Kimya Ve Gıda San.Tic.Ltd.Şti.","kind":"takviye","price":439.9,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683955895093","name":"DR.WAGNER A-Z DAILY ENERGY TAKVIYE EDICI GIDA TABLET 30 tablet","firm":"Letux Pharma İlaç Kimya Ve Gıda San.Tic.Ltd.Şti.","kind":"takviye","price":649.9,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
+    {"barcode":"8683962383002","name":"LONGIVO 2,5 MG 28 TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":2108.21,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
+    {"barcode":"8683962383026","name":"LONGIVO 20 MG TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":2200.99,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
     {"barcode":"8683962383033","name":"LONGIVO 5 MG 14 FILM TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":2137.99,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383057","name":"LONGIVO 20 MG 8 FILM TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":4058.51,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383071","name":"PARCALM PLUS 250 MG/5ML PEDIYATRIK ORAL SUSPANSIYON (150 ML)","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":229.69,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
@@ -11804,6 +11807,7 @@
     {"barcode":"8683962383484","name":"MAKSIPOR 250 MG/5 ML ORAL SUSPANSIYON ICIN KURU TOZ(100 ML SISE)","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":228.95,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383491","name":"MAKSIPOR 1 GR 20 FILM KAPLI TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":378.14,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383538","name":"ZITROCID 500 MG FILM TABLET (3 TABLET)","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":152.19,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
+    {"barcode":"8683962383545","name":"HIDRASIT 1000 MG CIGNEME TABLETI (24 TABLET)","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":318.42,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
     {"barcode":"8683962383705","name":"PRAKTEN 2 MG/5 ML SURUP","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":229.98,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383712","name":"DORSILON 450 MG/200 MG TABLET","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":166.76,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8683962383958","name":"DEBRUTIN 100 MG TABLET (40 TB)","firm":"Orbis Pharma İlaç Ve Kimya Kozmetik Medikal Sanayi Ticaret Limited Şirketi","kind":"ilac","price":152.63,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
@@ -16816,6 +16820,7 @@
     {"barcode":"8699522097302","name":"TIVICAY 25 MG 30 FILM KAPLI TABLET","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":7786.65,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699522097524","name":"VALTREX 1000 MG 21 FILM TABLET","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":764.83,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699522097708","name":"TIVICAY 50 MG 30 FILM TABLET","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":12369.57,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
+    {"barcode":"8699522098453","name":"TIVICAY 5 MG DAGILABILIR TABLET","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":5502.67,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
     {"barcode":"8699522099559","name":"ZEJULA 100 MG FILM KAPLI TABLET (56 ADET)","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":119372.92,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699522099573","name":"DOVIPSA 50 MG/300 MG FILM KAPLI TABLET","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":14352.6,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699522152285","name":"RETROVIR 250 MG SERT KAPSUL (40 KAPSUL)","firm":"Glaxosmithkline İlaçları San. Ve Tic. A.Ş.","kind":"ilac","price":3429.89,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
@@ -19363,6 +19368,7 @@
     {"barcode":"8699578090449","name":"CHOLVAST 10 MG 30 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":175.54,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699578090456","name":"CHOLVAST 20 MG 30 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":281.23,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699578090463","name":"CHOLVAST 40 MG 30 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":334.96,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
+    {"barcode":"8699578090487","name":"CHOLVAST 10 MG 90 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":518.01,"priceDate":"2026-10-18","firstSeen":"2026-10-18"},
     {"barcode":"8699578090494","name":"CHOLVAST 20 MG FİLM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":518.01,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699578090586","name":"COMBO 100 MG 4 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":2041.77,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},
     {"barcode":"8699578090616","name":"DILAPROST 5 MG 30 FILM KAPLI TABLET","firm":"Biofarma İlaç Sanayi Ve Ticaret A.Ş.","kind":"ilac","price":275.7,"firstSeen":"2026-10-16","priceDate":"2026-10-16"},

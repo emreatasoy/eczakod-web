@@ -1,19 +1,19 @@
 {
   "format": "eczakod-fiyat-surum",
   "version": 1,
-  "listDate": "2026-10-17",
-  "generatedAt": "2026-10-17T11:09:30+03:00",
-  "count": 23923,
+  "listDate": "2026-10-18",
+  "generatedAt": "2026-10-18T11:23:31+03:00",
+  "count": 23929,
   "kinds": {
     "takviye": 7793,
     "kozmetik": 5248,
-    "ilac": 10882
+    "ilac": 10888
   },
-  "sha256": "4757e13366d774c8545e662f6519e9b3f3ebe61b943e0903bfd3e58ffadfa22e",
+  "sha256": "8e9c100d55fc8a2564b88f434f53053aa2316d8f1e6247c0277528f97e46be10",
   "file": "fiyatlar.json",
   "changes": {
-    "added": 0,
-    "priceChanged": 2,
+    "added": 6,
+    "priceChanged": 0,
     "removed": 0
   }
 }
