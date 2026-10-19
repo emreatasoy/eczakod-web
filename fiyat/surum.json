@@ -2,18 +2,18 @@
   "format": "eczakod-fiyat-surum",
   "version": 1,
   "listDate": "2026-10-19",
-  "generatedAt": "2026-10-19T12:28:57+03:00",
+  "generatedAt": "2026-10-19T13:10:06+03:00",
   "count": 135515,
   "kinds": {
-    "takviye": 27823,
-    "kozmetik": 39178,
-    "diger": 5397,
     "medikal": 40464,
+    "kozmetik": 39178,
     "ilac": 13758,
-    "mama": 888,
-    "veteriner": 1433
+    "diger": 5397,
+    "takviye": 27823,
+    "veteriner": 1433,
+    "mama": 888
   },
-  "sha256": "19805f3f3a0d954fca26b2bc52d61de1ff424ba46b8cfa1bc5da5b14e8eff8c5",
+  "sha256": "c965f369eafb0ae8f21f9cda1c831e2fb87335afd154293b1fe52815c585aaac",
   "file": "fiyatlar.json",
   "changes": {
     "added": 0,
