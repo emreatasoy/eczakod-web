@@ -2,7 +2,7 @@
 /* ---------- Ana sayfa ---------- */
 .giris { padding: 56px 0 88px; overflow: hidden; }
 .giris .ic { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: 48px; align-items: center; }
-.giris h1 { max-width: 15ch; font-size: clamp(36px, 4.3vw, 56px); }
+.giris h1 { max-width: 20ch; font-size: clamp(34px, 3.7vw, 50px); }
 .giris .ozet { font-size: 19.5px; line-height: 1.55; max-width: 46ch; margin: 22px 0 30px; }
 .giris .eylem { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .giris .not { font-size: 14.5px; color: var(--soluk); margin-top: 16px; }
@@ -42,7 +42,7 @@
 /* Bölüm düzeni */
 .bolum { padding: 96px 0; }
 .bolum.gri { background: var(--raf); }
-.bolum-bas { max-width: 720px; margin-bottom: 48px; }
+.bolum-bas { max-width: 780px; margin-bottom: 48px; }
 .bolum-bas p { font-size: 19px; margin-top: 16px; }
 
 /* Karşılaştırma */
@@ -63,7 +63,7 @@
 .ozellik + .ozellik { margin-top: 120px; }
 .ozellik.ters .metin { order: 2; }
 .ozellik .metin p { font-size: 18px; }
-.ozellik h2 { margin-bottom: 18px; max-width: 16ch; }
+.ozellik h2 { margin-bottom: 18px; max-width: 20ch; }
 .ozellik ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
 .ozellik li { position: relative; padding-left: 30px; }
 .ozellik li::before { content: ""; position: absolute; left: 0; top: 5px; width: 18px; height: 18px; border-radius: 50%;

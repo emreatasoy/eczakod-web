@@ -26,10 +26,11 @@ a { color: var(--kirmizi); text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
   outline: 3px solid #2563EB; outline-offset: 3px; border-radius: 6px;
 }
-h1, h2, h3 { font-family: var(--baslik); color: var(--murekkep); margin: 0; font-weight: 750; }
-h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -0.025em; font-variation-settings: 'opsz' 96; }
-h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -0.02em; font-variation-settings: 'opsz' 72; }
-h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.01em; font-weight: 700; }
+h1, h2, h3 { font-family: var(--baslik); color: var(--murekkep); margin: 0; font-weight: 700; }
+/* Küçük optik boy harfleri açar; büyük boyda (96) harfler birbirine yapışıyordu. */
+h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.08; letter-spacing: 0; font-variation-settings: 'opsz' 24; }
+h2 { font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; letter-spacing: 0; font-variation-settings: 'opsz' 24; }
+h3 { font-size: 21px; line-height: 1.25; letter-spacing: 0; font-weight: 650; font-variation-settings: 'opsz' 18; }
 p { margin: 0 0 14px; }
 p:last-child { margin-bottom: 0; }
 b, strong { color: var(--murekkep); font-weight: 600; }
