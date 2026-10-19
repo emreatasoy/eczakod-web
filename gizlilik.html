@@ -4,72 +4,243 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EczaKod Gizlilik Politikası</title>
+<meta name="description" content="EczaKod mobil uygulaması ve PC programının gizlilik politikası: hangi veriler cihazda işlenir, neler hiç toplanmaz.">
+<link rel="icon" href="img/mark.png">
 <style>
-  :root { --ink: #21252A; --muted: #6B7280; --brand: #CC152A; --bg: #F4F5F7; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 64px; }
-  h1 { font-size: 28px; margin: 0 0 4px; }
-  h2 { font-size: 18px; margin: 32px 0 8px; }
-  .muted { color: var(--muted); }
-  .card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
-  li { margin: 4px 0; }
-  a { color: var(--brand); }
+  :root {
+    --brand: #CC152A; --brand-2: #E01B32; --ink: #21252A; --text: #374151; --muted: #6B7280;
+    --line: #E5E7EB; --bg: #F4F5F7; --card: #FFFFFF; --soft: #FBF2F3;
+    --ok: #16A34A; --info: #2563EB;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--brand); text-underline-offset: 3px; }
+  h1, h2, h3 { color: var(--ink); line-height: 1.25; }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+  code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; background: var(--bg); padding: 1px 6px; border-radius: 6px; color: var(--ink); }
+  b, strong { color: var(--ink); }
+
+  /* Üst çubuk (ana sayfayla aynı) */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.88); backdrop-filter: saturate(180%) blur(12px);
+         border-bottom: 1px solid var(--line); }
+  .top .in { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
+  .top img { height: 26px; width: auto; }
+  .top nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; font-weight: 600; align-items: center; }
+  .top nav a { color: var(--ink); text-decoration: none; }
+  .top nav a:hover, .top nav a.on { color: var(--brand); }
+  .top .dl { background: var(--brand); color: #fff !important; padding: 8px 16px; border-radius: 999px; }
+  .top .dl:hover { background: var(--brand-2); }
+
+  /* Giriş bandı */
+  .hero { background: var(--ink); color: #fff; }
+  .hero .in { max-width: 860px; margin: 0 auto; padding: 56px 20px 84px; }
+  .hero .logo { height: 34px; width: auto; }
+  .hero .eyebrow { display: inline-block; margin-top: 26px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #F38B97; }
+  .hero h1 { color: #fff; font-size: 40px; margin: 6px 0 12px; letter-spacing: -0.02em; }
+  .hero p { color: #C8CCD2; font-size: 18px; max-width: 640px; }
+  .hero .date { margin-top: 18px; font-size: 14px; color: #9CA3AF; }
+
+  main { max-width: 860px; margin: -48px auto 0; padding: 0 20px 72px; position: relative; }
+  .card { background: var(--card); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 18px;
+          box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.05); }
+
+  /* Kısaca */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .fact { text-align: center; padding: 4px 6px; }
+  .fact .ico { width: 52px; height: 52px; border-radius: 16px; background: var(--soft); color: var(--brand); display: grid; place-items: center; margin: 0 auto 10px; }
+  .fact b { display: block; font-size: 15px; }
+  .fact span { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+
+  /* Bölüm başlıkları */
+  .head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .head .ico { flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--soft); color: var(--brand); display: grid; place-items: center; }
+  .head h2 { font-size: 21px; margin: 0; letter-spacing: -0.01em; }
+
+  ul.check { list-style: none; padding: 0; margin: 0; }
+  ul.check li { position: relative; padding: 7px 0 7px 32px; border-bottom: 1px solid var(--line); }
+  ul.check li:last-child { border-bottom: 0; }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: 11px; width: 20px; height: 20px; border-radius: 50%;
+                        background: #ECFDF3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316A34A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat; }
+
+  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; background: #FAFAFB; }
+  td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .where { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: #F3F4F6; color: var(--ink); white-space: nowrap; }
+
+  .perm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .perm div { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .perm b { display: block; margin-bottom: 2px; }
+  .perm span { font-size: 15px; color: var(--text); }
+
+  .contact { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: var(--ink); color: #C8CCD2; }
+  .contact h2 { color: #fff; font-size: 21px; margin: 0 0 4px; }
+  .contact .btn { margin-left: auto; display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px;
+                  background: var(--brand); color: #fff; font-weight: 700; text-decoration: none; }
+  .contact .btn:hover { background: var(--brand-2); }
+
+  footer { background: var(--ink); color: #9CA3AF; font-size: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+  footer .in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  footer a { color: #fff; }
+
+  @media (max-width: 760px) {
+    .top nav a:not(.dl) { display: none; }
+    .hero h1 { font-size: 30px; }
+    .hero p { font-size: 16px; }
+    .facts { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+    .perm { grid-template-columns: 1fr; }
+    .card { padding: 22px 18px; }
+    .contact .btn { margin-left: 0; }
+    /* Dar ekranda tablo satırları alt alta: ad + yer üstte, açıklama altta */
+    .tbl thead { display: none; }
+    .tbl tr { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "ad yer" "ne ne"; gap: 4px 10px;
+              padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .tbl tr:last-child { border-bottom: 0; }
+    .tbl td { padding: 0; border: 0; }
+    .tbl td:nth-child(1) { grid-area: ad; white-space: normal; }
+    .tbl td:nth-child(2) { grid-area: ne; font-size: 15px; }
+    .tbl td:nth-child(3) { grid-area: yer; }
+  }
 </style>
 </head>
 <body>
+
+<header class="top">
+  <div class="in">
+    <a href="./"><img src="img/logo.png" alt="EczaKod"></a>
+    <nav>
+      <a href="./">Kurulum ve kullanım</a>
+      <a class="on" href="gizlilik.html">Gizlilik</a>
+      <a class="dl" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">İndir</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="in">
+    <img class="logo" src="img/logo-dark.png" alt="EczaKod">
+    <span class="eyebrow">Gizlilik politikası</span>
+    <h1>Verileriniz eczanenizde kalır.</h1>
+    <p>EczaKod mobil uygulaması ve EczaKod PC programı ("EczaKod"), ilaç kutularındaki karekod ve barkodları okuyup
+      eczanenin kendi bilgisayarına aktarmak için tasarlanmıştır. Bu sayfa hangi verilerin nerede ve nasıl
+      işlendiğini açıklar.</p>
+    <div class="date">Son güncelleme: 19 Ekim 2026</div>
+  </div>
+</div>
+
 <main>
-  <div class="card">
-    <h1>EczaKod Gizlilik Politikası</h1>
-    <p class="muted">Son güncelleme: 19 Ekim 2026</p>
 
-    <p>EczaKod mobil uygulaması ve EczaKod PC programı ("EczaKod"), eczanelerde ilaç kutularındaki karekod
-    ve barkodların okunup eczanenin kendi bilgisayarına aktarılması için tasarlanmıştır. Bu politika hangi
-    verilerin nasıl işlendiğini açıklar.</p>
+  <section class="card">
+    <div class="facts">
+      <div class="fact">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/><path d="M3 3l18 18"/></svg></div>
+        <b>Hesap yok</b><span>Ad, telefon, e-posta ya da konum istenmez</span>
+      </div>
+      <div class="fact">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z"/></svg></div>
+        <b>Sağlık verisi yok</b><span>Hasta ve reçete bilgisi işlenmez</span>
+      </div>
+      <div class="fact">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg></div>
+        <b>Takip yok</b><span>Reklam, analitik ya da kullanım izleme yok</span>
+      </div>
+      <div class="fact">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+        <b>Veriler cihazda</b><span>Okunanlar telefon ile eczane bilgisayarı arasında kalır</span>
+      </div>
+    </div>
+  </section>
 
-    <h2>Toplamadığımız veriler</h2>
-    <ul>
+  <section class="card">
+    <div class="head">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></div>
+      <h2>Toplamadığımız veriler</h2>
+    </div>
+    <ul class="check">
       <li>Hasta, reçete veya sağlık bilgisi işlenmez.</li>
       <li>Hesap, ad, telefon numarası, e-posta veya konum bilgisi istenmez.</li>
       <li>Reklam, analitik ya da kullanım takibi yapılmaz; üçüncü taraf takip kütüphanesi yoktur.</li>
       <li>Okunan kodlar, sepetler, sayımlar ve fiyat sorguları geliştiriciye ya da başka bir sunucuya gönderilmez.</li>
     </ul>
+  </section>
 
-    <h2>Fiyat listesi</h2>
+  <section class="card">
+    <div class="head">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+      <h2>Cihazda işlenen veriler</h2>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Veri</th><th>Ne için, nasıl</th><th>Nerede</th></tr></thead>
+        <tbody>
+          <tr><td>Kamera görüntüsü</td><td>Karekod ve barkodları çözmek için anlık işlenir; kaydedilmez, hiçbir yere gönderilmez.</td><td><span class="where">Telefon</span></td></tr>
+          <tr><td>Okunan kodlar</td><td>Ürün numarası (GTIN), seri numarası, parti (lot) ve son kullanma tarihi. Kullanıcı isteyince yalnızca eşleştirilmiş eczane bilgisayarına, yerel ağ üzerinden ve şifreli (TLS) bağlantıyla gönderilir.</td><td><span class="where">Telefon → Eczane PC</span></td></tr>
+          <tr><td>Gönderim geçmişi</td><td>Bilgisayara yazılan son 300 kod, kontrol amacıyla saklanır; uygulama içinden silinebilir.</td><td><span class="where">Telefon</span></td></tr>
+          <tr><td>Sepetler ve sayımlar</td><td>Satış sepetleri, elle girilen fiyatlar ve stok sayımları; uygulama içinden silinebilir.</td><td><span class="where">Telefon</span></td></tr>
+          <tr><td>Eşleştirme bilgisi</td><td>Eşleşilen bilgisayarın adı, yerel ağ adresi ve güvenli bağlantı anahtarı.</td><td><span class="where">Telefon, Eczane PC</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="head">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div>
+      <h2>Fiyat listesi</h2>
+    </div>
     <p>Uygulama, ürünlerin öneri satış fiyatını gösterebilmek için herkese açık fiyat listesini
-    <code>eczakod.com</code> adresinden indirir. Telefon Wi-Fi'deyken en çok birkaç saatte bir yalnızca değişen
-    kayıtlar alınır; fiyat sorgusu telefondaki listeden yapılır. Bu indirmede hiçbir kişisel veri ya da okunan
-    kod gönderilmez. Sitenin barındırıldığı hizmet (GitHub Pages) her web isteğinde olduğu gibi IP adresini
-    güvenlik amacıyla kısa süre kaydedebilir.</p>
+      <code>eczakod.com</code> adresinden indirir. Telefon Wi-Fi'deyken en çok birkaç saatte bir yalnızca değişen
+      kayıtlar alınır; fiyat sorgusu telefondaki listeden yapılır.</p>
+    <p>Bu indirmede hiçbir kişisel veri ya da okunan kod gönderilmez. Sitenin barındırıldığı hizmet (GitHub Pages),
+      her web isteğinde olduğu gibi IP adresini güvenlik amacıyla kısa süre kaydedebilir.</p>
+  </section>
 
-    <h2>Cihazda işlenen veriler</h2>
-    <ul>
-      <li><strong>Kamera görüntüsü:</strong> Karekod ve barkodları çözmek için yalnızca telefonda anlık işlenir;
-        kaydedilmez ve hiçbir yere gönderilmez.</li>
-      <li><strong>Okunan kodlar:</strong> Ürün numarası (GTIN), seri numarası, parti (lot) ve son kullanma
-        tarihi. Kullanıcının isteğiyle yalnızca eşleştirilmiş eczane bilgisayarına, yerel ağ üzerinden ve
-        şifreli (TLS) bağlantıyla gönderilir.</li>
-      <li><strong>Gönderim geçmişi:</strong> Bilgisayara yazılan son 300 kod, kontrol amacıyla yalnızca
-        telefonda saklanır; uygulama içinden silinebilir.</li>
-      <li><strong>Eşleştirme bilgisi:</strong> Eşleşilen bilgisayarın adı, yerel ağ adresi ve güvenli bağlantı
-        anahtarı telefonda saklanır.</li>
-      <li><strong>Sepetler ve sayımlar:</strong> Satış sepetleri, elle girilen fiyatlar ve stok sayımları yalnızca
-        telefonda saklanır; uygulama içinden silinebilir.</li>
-    </ul>
+  <section class="card">
+    <div class="head">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
+      <h2>İzinler</h2>
+    </div>
+    <div class="perm">
+      <div><b>Kamera</b><span>Karekod ve barkod okumak için.</span></div>
+      <div><b>Ağ</b><span>Eczane bilgisayarıyla yerel ağ üzerinden haberleşmek ve fiyat listesini indirmek için.</span></div>
+    </div>
+  </section>
 
-    <h2>İzinler</h2>
-    <ul>
-      <li><strong>Kamera:</strong> Karekod ve barkod okumak için.</li>
-      <li><strong>Ağ:</strong> Eczane bilgisayarıyla yerel ağ üzerinden haberleşmek ve fiyat listesini indirmek için.</li>
-    </ul>
+  <section class="card">
+    <div class="head">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13a2 2 0 002 2h6a2 2 0 002-2l1-13M9 7V4h6v3"/></svg></div>
+      <h2>Verilerin silinmesi</h2>
+    </div>
+    <p>Tüm veriler kullanıcının kendi cihazlarında bulunur. Uygulamayı kaldırmak telefondaki verileri siler.
+      PC programını kaldırmak bilgisayardaki eşleşme kayıtlarını kullanıcı klasöründe bırakır; bunlar
+      <code>%APPDATA%\EczaKod</code> klasörü silinerek kaldırılabilir.</p>
+  </section>
 
-    <h2>Verilerin silinmesi</h2>
-    <p>Tüm veriler kullanıcının kendi cihazlarında bulunur. Uygulamayı kaldırmak telefondaki verileri siler;
-    PC programını kaldırmak bilgisayardaki eşleşme kayıtlarını kullanıcı klasöründe bırakır ve bunlar
-    <code>%APPDATA%\EczaKod</code> klasörü silinerek kaldırılabilir.</p>
+  <section class="card contact">
+    <div>
+      <h2>İletişim</h2>
+      <span>Gizlilikle ilgili sorularınız için bize yazın.</span>
+    </div>
+    <a class="btn" href="mailto:destek@eczakod.com">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      destek@eczakod.com
+    </a>
+  </section>
 
-    <h2>İletişim</h2>
-    <p>Sorularınız için: <a href="mailto:destek@eczakod.com">destek@eczakod.com</a></p>
-  </div>
 </main>
+
+<footer>
+  <div class="in">
+    <img src="img/logo-dark.png" alt="EczaKod" style="height:22px;width:auto">
+    <span>Eczaneler için toplu karekod okuyucu</span>
+    <span style="margin-left:auto"><a href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a> · <a href="./">Rehber</a> · <a href="mailto:destek@eczakod.com">destek@eczakod.com</a></span>
+  </div>
+</footer>
+
 </body>
 </html>
