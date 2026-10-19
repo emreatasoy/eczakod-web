@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İletişim · EczaKod</title>
+<meta name="description" content="EczaKod'u eczanenizde denemek, kurulum desteği almak ya da öneri iletmek için bize yazın.">
+<link rel="icon" href="img/mark.png">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="ust">
+  <div class="ic">
+    <a class="logo" href="./"><img src="img/logo.png" alt="EczaKod ana sayfa"></a>
+    <button class="menu-dugme" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="menu">
+      <a href="./#ozellikler">Özellikler</a>
+      <a href="kurulum.html">Kurulum ve kullanım</a>
+      <a href="./#sss">Sık sorulanlar</a>
+      <a href="iletisim.html" aria-current="page">İletişim</a>
+      <a class="dugme ana kucuk" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik">
+<div class="sayfa-bas">
+  <div class="ic">
+    <h1>Bize ulaşın</h1>
+    <p>EczaKod'u eczanenizde denemek, kurulumda yardım almak ya da bir öneri iletmek için formu doldurun. Yanıtı e-posta adresinize yazarız.</p>
+  </div>
+</div>
+
+<div class="ic iletisim">
+  <!-- data-adres: Google Apps Script web uygulaması adresi (eczakod/tools/iletisim/README.md). Boşsa form e-posta taslağı açar. -->
+  <form class="form" id="iletisim-formu" data-adres="" novalidate>
+    <label>Ad soyad
+      <input name="ad" autocomplete="name" required maxlength="80">
+    </label>
+    <label>Eczane adı <small>(isteğe bağlı)</small>
+      <input name="eczane" autocomplete="organization" maxlength="120">
+    </label>
+    <label>E-posta
+      <input name="eposta" type="email" autocomplete="email" required maxlength="120">
+    </label>
+    <label>Telefon <small>(isteğe bağlı)</small>
+      <input name="telefon" type="tel" autocomplete="tel" maxlength="30">
+    </label>
+    <label>Şehir <small>(isteğe bağlı)</small>
+      <input name="sehir" autocomplete="address-level1" maxlength="40">
+    </label>
+    <label>Konu
+      <select name="konu" required>
+        <option>Eczanemde denemek istiyorum</option>
+        <option>Kurulum desteği</option>
+        <option>Sorun bildirimi</option>
+        <option>Öneri</option>
+        <option>Diğer</option>
+      </select>
+    </label>
+    <label class="tam">Mesajınız
+      <textarea name="mesaj" required maxlength="4000" placeholder="Kullandığınız eczane programını ve telefon modelini yazarsanız daha hızlı yardımcı olabiliriz."></textarea>
+    </label>
+    <label class="bal" aria-hidden="true">Web sitesi <input name="web" tabindex="-1" autocomplete="off"></label>
+    <label class="onay tam"><input type="checkbox" name="onay" value="evet" required>
+      <span>Bilgilerimin yalnızca bu talebe yanıt vermek için işlenmesini kabul ediyorum. <a href="gizlilik.html#iletisim-formu">Aydınlatma metni</a></span>
+    </label>
+    <div class="gonder-satir tam">
+      <button class="dugme ana" type="submit">Mesajı gönder</button>
+    </div>
+    <p class="form-durum" role="status" tabindex="-1" hidden></p>
+  </form>
+
+  <aside>
+    <div class="kart">
+      <h2>E-posta</h2>
+      <p>Formu kullanmak istemezseniz doğrudan yazın:</p>
+      <a class="eposta" href="mailto:destek@eczakod.com">destek@eczakod.com</a>
+    </div>
+    <div class="kart">
+      <h2>Destek isterken</h2>
+      <p>Şunları eklerseniz sorunu ilk yanıtta çözebiliriz:</p>
+      <ul>
+        <li>Eczane programınızın adı</li>
+        <li>Telefon modeli ve Windows sürümü</li>
+        <li>Telefonda ya da Günlük penceresinde görünen mesaj</li>
+      </ul>
+    </div>
+    <div class="kart">
+      <h2>Önce bakmak isterseniz</h2>
+      <p><a href="kurulum.html">Kurulum ve kullanım</a> sayfasında adım adım anlatım ve <a href="kurulum.html#sorunlar">sorun giderme</a> bölümü var.</p>
+    </div>
+  </aside>
+</div>
+</main>
+
+<footer class="alt">
+  <div class="ic">
+    <div>
+      <img src="img/logo-dark.png" alt="EczaKod">
+      <p>Eczaneler için toplu karekod okuyucu.</p>
+    </div>
+    <div><h3>Ürün</h3><ul><li><a href="./#ozellikler">Özellikler</a></li><li><a href="./#indir">İndir</a></li><li><a href="./#sss">Sık sorulanlar</a></li></ul></div>
+    <div><h3>Yardım</h3><ul><li><a href="kurulum.html">Kurulum ve kullanım</a></li><li><a href="kurulum.html#sorunlar">Sorun giderme</a></li><li><a href="iletisim.html">İletişim</a></li></ul></div>
+    <div><h3>Kurumsal</h3><ul><li><a href="gizlilik.html">Gizlilik politikası</a></li><li><a href="mailto:destek@eczakod.com">destek@eczakod.com</a></li></ul></div>
+    <p class="telif">© 2026 EczaKod. Görsellerdeki ürün adları ve fiyatlar örnektir; seri numaraları ve tarihler uydurmadır.</p>
+  </div>
+</footer>
+<script src="js/site.js" defer></script>
+</body>
+</html>

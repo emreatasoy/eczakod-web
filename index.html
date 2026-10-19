@@ -3,546 +3,309 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EczaKod — Kurulum ve Kullanım Rehberi</title>
-<meta name="description" content="EczaKod: ilaç karekodlarını telefon kamerasıyla topluca okutun, eczane programınıza otomatik yazılsın. Kurulum, görev çubuğundan erişim, eşleştirme, satış, stok sayımı ve ayarlar.">
+<title>EczaKod: eczaneler için toplu karekod okuyucu</title>
+<meta name="description" content="Telefon kameranızla ilaç karekodlarını topluca okutun; kodlar Wi-Fi ile eczane programına kendiliğinden yazılsın. Fiyat ve miad ekranda, stok sayımı aynı uygulamada.">
+<meta property="og:title" content="EczaKod: eczaneler için toplu karekod okuyucu">
+<meta property="og:description" content="Kutuları kameraya gösterin; karekodlar eczane programına kendiliğinden yazılsın.">
+<meta property="og:image" content="https://eczakod.com/img/ekran/tara.webp">
+<meta property="og:url" content="https://eczakod.com/">
 <link rel="icon" href="img/mark.png">
-<style>
-  :root {
-    --brand: #CC152A; --brand-2: #E01B32; --ink: #21252A; --text: #374151; --muted: #6B7280;
-    --line: #E5E7EB; --bg: #F4F5F7; --card: #FFFFFF; --soft: #FBF2F3;
-    --ok: #16A34A; --warn: #D97706; --bad: #DC2626; --info: #2563EB;
-    --radius: 18px;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-  img { max-width: 100%; display: block; }
-  a { color: var(--brand); text-underline-offset: 3px; }
-  h1, h2, h3 { color: var(--ink); line-height: 1.25; }
-  h2 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
-  h3 { font-size: 18px; margin: 26px 0 8px; }
-  p { margin: 0 0 12px; }
-  code, kbd { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; }
-  kbd { background: #fff; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 1px 6px; color: var(--ink); }
-  b, strong { color: var(--ink); }
-
-  /* Üst çubuk */
-  .top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.88); backdrop-filter: saturate(180%) blur(12px);
-         border-bottom: 1px solid var(--line); }
-  .top .in { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
-  .top img { height: 26px; width: auto; }
-  .top nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; font-weight: 600; }
-  .top nav a { color: var(--ink); text-decoration: none; }
-  .top nav a:hover { color: var(--brand); }
-  .top .dl { background: var(--brand); color: #fff; padding: 8px 16px; border-radius: 999px; }
-  .top .dl:hover { background: var(--brand-2); color: #fff; }
-
-  /* Giriş */
-  .hero { background: var(--ink); color: #fff; overflow: hidden; }
-  .hero .in { max-width: 1120px; margin: 0 auto; padding: 64px 20px 56px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
-  .hero h1 { color: #fff; font-size: 44px; margin: 18px 0 14px; letter-spacing: -0.02em; }
-  .hero p { color: #C8CCD2; font-size: 18px; }
-  .hero .logo { height: 40px; width: auto; }
-  .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 10px; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; }
-  .btn.primary { background: var(--brand); color: #fff; }
-  .btn.primary:hover { background: var(--brand-2); }
-  .btn.ghost { border: 1px solid rgba(255,255,255,.3); color: #fff; }
-  .btn.ghost:hover { background: rgba(255,255,255,.08); }
-  .hero .small { font-size: 14px; color: #9CA3AF; }
-  .phones { display: flex; gap: 14px; justify-content: center; }
-  .phones img { width: 46%; border-radius: 22px; border: 6px solid #0B0D10; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
-  .phones img:last-child { margin-top: 40px; }
-
-  /* Akış şeması */
-  .flow { max-width: 1120px; margin: -28px auto 0; padding: 0 20px; position: relative; }
-  .flow .card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 22px 10px; }
-  .flow .step { text-align: center; padding: 6px 14px; position: relative; }
-  .flow .step + .step::before { content: ""; position: absolute; left: -10px; top: 26px; width: 20px; height: 2px; background: var(--line); }
-  .flow .ico { width: 52px; height: 52px; border-radius: 16px; background: var(--soft); color: var(--brand); display: grid; place-items: center; margin: 0 auto 8px; }
-  .flow b { display: block; font-size: 15px; }
-  .flow span { font-size: 13px; color: var(--muted); }
-
-  /* Düzen */
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px 80px; display: grid; grid-template-columns: 230px 1fr; gap: 40px; }
-  .toc { position: sticky; top: 84px; align-self: start; font-size: 14px; }
-  .toc b { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .toc a { display: flex; gap: 10px; padding: 7px 10px; border-radius: 10px; color: var(--text); text-decoration: none; }
-  .toc a:hover { background: #fff; color: var(--ink); }
-  .toc a i { font-style: normal; color: var(--muted); width: 18px; }
-  section.doc { margin-bottom: 26px; }
-  .card { background: var(--card); border-radius: var(--radius); padding: 28px 30px; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.05); }
-  .lead { color: var(--muted); margin-bottom: 18px; }
-  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); margin-bottom: 6px; }
-
-  /* Adımlar */
-  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 14px 0 0; }
-  ol.steps > li { counter-increment: s; position: relative; padding: 0 0 18px 48px; }
-  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
-                          background: var(--ink); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; }
-  ol.steps > li:not(:last-child)::after { content: ""; position: absolute; left: 15px; top: 36px; bottom: 4px; width: 2px; background: var(--line); }
-  ol.steps > li > b:first-child { display: block; margin-bottom: 2px; }
-
-  .callout { border-radius: 14px; padding: 14px 16px 14px 46px; margin: 16px 0; position: relative; font-size: 15px; }
-  .callout::before { position: absolute; left: 14px; top: 13px; width: 20px; height: 20px; border-radius: 50%; color: #fff; font-weight: 800; font-size: 13px; display: grid; place-items: center; }
-  .callout.tip { background: #EFF6FF; } .callout.tip::before { content: "i"; background: var(--info); }
-  .callout.warn { background: #FFF7ED; } .callout.warn::before { content: "!"; background: var(--warn); }
-  .callout.key { background: var(--soft); } .callout.key::before { content: "★"; background: var(--brand); font-size: 11px; }
-  .callout p:last-child { margin: 0; }
-
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .shot { display: grid; grid-template-columns: 220px 1fr; gap: 26px; align-items: start; margin-top: 10px; }
-  .shot img { border-radius: 20px; border: 5px solid var(--ink); box-shadow: 0 12px 30px rgba(16,24,40,.15); }
-
-  table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 8px 0 4px; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; background: #FAFAFB; }
-  td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
-  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; }
-  .tbl table { margin: 0; } .tbl tr:last-child td { border-bottom: 0; }
-  .rec { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #ECFDF3; color: var(--ok); white-space: nowrap; }
-
-  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
-  .legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 10px 0 6px; font-size: 15px; }
-  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: #F3F4F6; color: var(--ink); font-weight: 600; font-size: 14px; }
-
-  .menu { background: #fff; border: 1px solid #D1D5DB; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,.15); font: 14px/1.2 "Segoe UI", sans-serif; color: #111; padding: 4px 0; max-width: 340px; }
-  .menu div { padding: 7px 14px 7px 34px; display: flex; justify-content: space-between; gap: 20px; }
-  .menu div.t { font-weight: 700; color: #111; } .menu div.s { color: #6B7280; }
-  .menu hr { border: 0; border-top: 1px solid #E5E7EB; margin: 4px 0; }
-  .menu em { font-style: normal; color: var(--muted); font-size: 12px; }
-
-  details { border: 1px solid var(--line); border-radius: 14px; margin: 10px 0; background: #fff; }
-  details summary { cursor: pointer; padding: 14px 18px; font-weight: 700; color: var(--ink); list-style: none; display: flex; gap: 10px; align-items: center; }
-  details summary::-webkit-details-marker { display: none; }
-  details summary::before { content: "+"; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; font-weight: 800; color: var(--muted); flex: none; }
-  details[open] summary::before { content: "–"; }
-  details > div { padding: 0 18px 14px 50px; }
-
-  footer { background: var(--ink); color: #9CA3AF; font-size: 14px; }
-  footer .in { max-width: 1120px; margin: 0 auto; padding: 28px 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
-  footer a { color: #fff; }
-
-  @media (max-width: 960px) {
-    .wrap { grid-template-columns: 1fr; }
-    .toc { display: none; }
-    .hero .in { grid-template-columns: 1fr; }
-    .phones { display: none; }
-    .top nav a:not(.dl) { display: none; }
-  }
-  @media (max-width: 680px) {
-    .hero h1 { font-size: 32px; }
-    .flow .card { grid-template-columns: 1fr 1fr; row-gap: 16px; }
-    .flow .step + .step::before { display: none; }
-    .card { padding: 22px 18px; }
-    .grid2, .shot { grid-template-columns: 1fr; }
-    .shot img { max-width: 240px; }
-  }
-</style>
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
 
-<header class="top">
-  <div class="in">
-    <a href="#"><img src="img/logo.png" alt="EczaKod"></a>
-    <nav>
-      <a href="#kurulum">Kurulum</a>
-      <a href="#satis">Satış</a>
-      <a href="#sayim">Stok sayımı</a>
-      <a href="#ayarlar">Ayarlar</a>
-      <a href="#sorunlar">Sorunlar</a>
-      <a class="dl" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">İndir</a>
+<header class="ust">
+  <div class="ic">
+    <a class="logo" href="./"><img src="img/logo.png" alt="EczaKod ana sayfa"></a>
+    <button class="menu-dugme" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="menu">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="kurulum.html">Kurulum ve kullanım</a>
+      <a href="#sss">Sık sorulanlar</a>
+      <a href="iletisim.html">İletişim</a>
+      <a class="dugme ana kucuk" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a>
     </nav>
   </div>
 </header>
 
-<div class="hero">
-  <div class="in">
+<main id="icerik">
+
+<section class="giris">
+  <div class="ic">
     <div>
-      <img class="logo" src="img/logo-dark.png" alt="EczaKod">
-      <h1>Karekodları topluca okutun, eczane stok uygulamasına kendiliğinden yazılsın.</h1>
-      <p>Kutuları telefon kamerasına gösterin; EczaKod okunan karekodları Wi-Fi üzerinden eczane bilgisayarına gönderir
-        ve satış ekranına sırayla yazar. Stok sayımı da aynı kolaylıkta.</p>
-      <div class="cta">
-        <a class="btn primary" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+      <h1>Kutuları kameraya gösterin, karekodlar eczane programına yazılsın.</h1>
+      <p class="ozet">EczaKod telefonunuzu toplu karekod okuyucuya çevirir. Bir karede birden çok kutu okunur; fiyat ve miad
+        telefonda görünür, kodlar Wi-Fi üzerinden kasadaki bilgisayara el okuyucusu gibi yazılır.</p>
+      <div class="eylem">
+        <a class="dugme ana" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
           Windows için indir
         </a>
-        <a class="btn ghost" href="#kurulum">Kurulum rehberi</a>
+        <a class="dugme cerceve" href="iletisim.html">Eczanemde deneyelim</a>
       </div>
-      <p class="small">Her zaman en güncel sürüm iner · Windows 10/11, 64 bit · Android uygulaması Google Play'de</p>
+      <p class="not">Windows 10 ve 11 · Telefon uygulaması Google Play ve App Store'da çok yakında</p>
     </div>
-    <div class="phones">
-      <img src="img/tara.webp" alt="EczaKod Tara ekranı: iki karekod yeşil çerçeveyle okunmuş">
-      <img src="img/liste.webp" alt="Okunan karekodlar listesi ve son kullanma tarihleri">
-    </div>
-  </div>
-</div>
 
-<div class="flow">
-  <div class="card">
-    <div class="step">
-      <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
-      <b>Telefonla okutun</b><span>Kamera bir karede birden çok karekod okur</span>
-    </div>
-    <div class="step">
-      <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a16 16 0 0120 0M5 12.5a11 11 0 0114 0M8.5 16a6 6 0 017 0"/><circle cx="12" cy="19.5" r="1"/></svg></div>
-      <b>Wi-Fi ile gönderin</b><span>Şifreli, yalnızca eczanedeki bilgisayara</span>
-    </div>
-    <div class="step">
-      <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-      <b>EczaKod alır</b><span>Görev çubuğunda çalışan program</span>
-    </div>
-    <div class="step">
-      <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg></div>
-      <b>Stok uygulamasına yazılır</b><span>El okuyucusu gibi, kutu kutu</span>
+    <div class="sahne" aria-label="Telefon altı kutuyu okuyup sepete ekliyor, kodlar eczane programına satır satır yazılıyor">
+      <figure class="telefon"><img src="img/ekran/satis-coklu.webp" alt="EczaKod Satış ekranı: altı ilaç kutusu okunmuş, sepete 797,04 TL eklendi"></figure>
+      <div class="baglanti" aria-hidden="true"><i></i>KASA-1'e yazılıyor</div>
+      <div class="program" aria-hidden="true">
+        <div class="baslik-cubugu"><i></i><i></i><i></i><b>Eczane programı · Satış</b></div>
+        <div class="giris-alani">Karekod okutun</div>
+        <table>
+          <thead><tr><th>Ürün</th><th class="sayi">Adet</th><th class="sayi">Tutar</th></tr></thead>
+          <tbody>
+            <tr><td>PAROL 500MG 30 TABLET</td><td class="sayi">1</td><td class="sayi">105,16</td></tr>
+            <tr><td>ARVELES 25MG 20 FİLM TABLET</td><td class="sayi">1</td><td class="sayi">118,47</td></tr>
+            <tr><td>MAJEZİK 100MG 15 FİLM TABLET</td><td class="sayi">1</td><td class="sayi">204,49</td></tr>
+            <tr><td>APRANAX 275MG 20 TABLET</td><td class="sayi">1</td><td class="sayi">151,51</td></tr>
+            <tr><td>CORASPIN 100MG 30 TABLET</td><td class="sayi">1</td><td class="sayi">64,78</td></tr>
+            <tr><td>DEVIT-3 50.000IU/15ML DAMLA</td><td class="sayi">1</td><td class="sayi">152,63</td></tr>
+          </tbody>
+        </table>
+        <div class="toplam"><span>Toplam</span><span data-toplam>797,04 ₺</span></div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="wrap">
-  <aside class="toc">
-    <b>İçindekiler</b>
-    <a href="#kurulum"><i>1</i>Bilgisayar kurulumu</a>
-    <a href="#gorev-cubugu"><i>2</i>Görev çubuğundan erişim</a>
-    <a href="#telefon"><i>3</i>Telefon ve eşleştirme</a>
-    <a href="#satis"><i>4</i>Satış ekranına okutma</a>
-    <a href="#sayim"><i>5</i>Stok sayımı</a>
-    <a href="#gecmis"><i>6</i>Geçmiş</a>
-    <a href="#ayarlar"><i>7</i>Ayarlar</a>
-    <a href="#sorunlar"><i>8</i>Sorun giderme</a>
-    <a href="#guncelleme"><i>9</i>Güncelleme ve kaldırma</a>
-  </aside>
+<section class="bolum gri" id="neden">
+  <div class="ic">
+    <div class="bolum-bas">
+      <h2>Kasadaki el okuyucusunun yerini alır</h2>
+      <p>EczaKod bilgisayara klavyeden yazar; eczane programı onu bir barkod okuyucu gibi görür. Fark, telefonun ekranı ve kamerasıyla gelir.</p>
+    </div>
+    <div class="tablo-kap">
+      <table class="karsilastir">
+        <thead><tr><th scope="col"></th><th scope="col">El tipi barkod okuyucu</th><th scope="col">EczaKod</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Okuma</th><td>Kutu kutu, tetiğe basarak</td><td>Bir karede 20 kutuya kadar, her kutu bir kez</td></tr>
+          <tr><th scope="row">Fiyat</th><td>Göstermez</td><td>Öneri satış fiyatı, ürün tipi ve KDV telefonda</td></tr>
+          <tr><th scope="row">Miad</th><td>Fark etmez</td><td>Miadı geçmiş kutuda kırmızı uyarı ve uyarı sesi</td></tr>
+          <tr><th scope="row">Stok sayımı</th><td>Ayrı cihaz ya da ayrı uygulama</td><td>Aynı uygulamada; miad dağılımıyla, kaldığı yerden</td></tr>
+          <tr><th scope="row">Bağlantı</th><td>Kablo ya da kısa menzilli alıcı</td><td>Eczanenin Wi-Fi'ı; depoda da, kasada da</td></tr>
+          <tr><th scope="row">Donanım</th><td>Her tezgâha ayrı okuyucu</td><td>Eczanedeki telefonlar yeter</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-  <main>
+<section class="bolum" id="ozellikler">
+  <div class="ic">
 
-    <!-- 1 -->
-    <section class="doc card" id="kurulum">
-      <span class="eyebrow">Adım 1</span>
-      <h2>Bilgisayar kurulumu</h2>
-      <p class="lead">Eczane stok uygulamasının çalıştığı kasa bilgisayarına bir kez kurulur. Yaklaşık 2 dakika sürer.</p>
-      <ol class="steps">
-        <li><b>Kurulum dosyasını indirin</b>
-          <a href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">EczaKod-Kurulum.exe</a> dosyasını indirip çift tıklayın. Bağlantı her zaman en güncel sürümü indirir.</li>
-        <li><b>Windows uyarısını geçin</b>
-          Mavi "Windows kişisel bilgisayarınızı korudu" penceresi çıkarsa <b>Ek bilgi</b>'ye, ardından <b>Yine de çalıştır</b>'a basın.
-          Ardından gelen "Bu uygulamanın cihazınızda değişiklik yapmasına izin veriyor musunuz?" sorusuna <b>Evet</b> deyin.</li>
-        <li><b>Kurulum sihirbazını tamamlayın</b>
-          <b>Windows açılınca EczaKod'u başlat</b> seçeneğini işaretli bırakın; bilgisayar her açıldığında EczaKod kendiliğinden çalışır.
-          İsterseniz masaüstü kısayolu da ekleyebilirsiniz. <b>Kur</b> → <b>Son</b>.</li>
-        <li><b>Güvenlik duvarı izni kendiliğinden verilir</b>
-          Kurulum, telefonun bilgisayara bağlanabilmesi için Windows Güvenlik Duvarı'na izin ekler. Ayrıca bir şey yapmanız gerekmez.</li>
-        <li><b>Eşleştirme penceresi açılır</b>
-          İlk açılışta "EczaKod — Telefon eşleştir" penceresi ve bir QR kod görünür. Telefonu hazırlayınca bu QR'ı okutacaksınız
-          (<a href="#telefon">Adım 3</a>).</li>
-      </ol>
-      <div class="callout tip"><p>EczaKod bir pencere programı değildir; arka planda, saatin yanındaki simgede çalışır. Pencereyi kapatmanız programı kapatmaz.</p></div>
-    </section>
-
-    <!-- 2 -->
-    <section class="doc card" id="gorev-cubugu">
-      <span class="eyebrow">Adım 2</span>
-      <h2>EczaKod'a görev çubuğundan ulaşma</h2>
-      <p class="lead">Ekranın sağ altındaki saatin yanında kırmızı <b>EK</b> simgesi bulunur. Tüm işlemler bu simgeden yapılır.</p>
-
-      <svg viewBox="0 0 760 210" role="img" aria-label="Görev çubuğunda gizli simgeler oku ve EczaKod simgesi" style="width:100%;height:auto;margin:6px 0 10px">
-        <rect x="0" y="0" width="760" height="210" rx="14" fill="#DCE3EC"/>
-        <rect x="430" y="18" width="200" height="118" rx="10" fill="#fff" stroke="#C9D2DD"/>
-        <text x="446" y="40" font-size="12" fill="#6B7280" font-family="Segoe UI, sans-serif">Gizli simgeler</text>
-        <g transform="translate(446 54)">
-          <rect width="34" height="34" rx="6" fill="#F3F4F6"/><rect x="44" width="34" height="34" rx="6" fill="#F3F4F6"/>
-          <rect x="88" width="34" height="34" rx="6" fill="#FBF2F3" stroke="#CC152A" stroke-width="2"/>
-          <image href="img/mark.png" x="92" y="8" width="26" height="18"/>
-          <rect x="132" width="34" height="34" rx="6" fill="#F3F4F6"/>
-          <rect y="44" width="34" height="34" rx="6" fill="#F3F4F6"/><rect x="44" y="44" width="34" height="34" rx="6" fill="#F3F4F6"/>
-        </g>
-        <path d="M553 136 L553 150" stroke="#CC152A" stroke-width="2" stroke-dasharray="3 3"/>
-        <rect x="0" y="158" width="760" height="52" rx="0" fill="#1F2937"/>
-        <rect x="0" y="196" width="760" height="14" fill="#1F2937"/>
-        <g fill="#9CA3AF"><rect x="24" y="172" width="24" height="24" rx="5"/><rect x="62" y="172" width="24" height="24" rx="5"/><rect x="100" y="172" width="24" height="24" rx="5"/></g>
-        <circle cx="540" cy="184" r="16" fill="#374151"/>
-        <path d="M533 188 L540 181 L547 188" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <rect x="566" y="170" width="30" height="28" rx="6" fill="#fff"/>
-        <image href="img/mark.png" x="569" y="176" width="24" height="16"/>
-        <circle cx="590" cy="192" r="5" fill="#16A34A" stroke="#fff" stroke-width="1.5"/>
-        <text x="620" y="182" font-size="13" fill="#fff" font-family="Segoe UI, sans-serif">14:32</text>
-        <text x="610" y="198" font-size="11" fill="#D1D5DB" font-family="Segoe UI, sans-serif">15.10.2026</text>
-        <text x="420" y="152" font-size="12" fill="#374151" font-family="Segoe UI, sans-serif" text-anchor="end">^ okuna tıklayın</text>
-        <path d="M424 148 L522 176" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#ok)"/>
-        <defs><marker id="ok" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#374151"/></marker></defs>
-      </svg>
-
-      <h3>Simge görünmüyorsa</h3>
-      <ol class="steps">
-        <li><b>Gizli simgelere bakın</b> Saatin solundaki <kbd>^</kbd> okuna tıklayın; EczaKod simgesi açılan kutudadır.</li>
-        <li><b>Görev çubuğuna sabitleyin</b> Simgeyi o kutudan sürükleyip saatin yanına bırakın. Artık hep görünür.
-          <br><span style="color:var(--muted);font-size:15px">Windows 11'de ayrıca: Ayarlar → Kişiselleştirme → Görev çubuğu → <i>Diğer sistem tepsisi simgeleri</i> → EczaKod'u açın.
-          Windows 10'da: Görev çubuğuna sağ tık → Görev çubuğu ayarları → <i>Görev çubuğunda hangi simgelerin görüneceğini seçin</i> → EczaKod'u açın.</span></li>
-        <li><b>Hiç yoksa programı başlatın</b> Başlat menüsüne <b>EczaKod</b> yazıp açın. Program zaten açıksa ikinci kopya açılmaz.</li>
-      </ol>
-
-      <h3>Simgenin anlamı</h3>
-      <div class="legend">
-        <span><span class="dot" style="background:var(--ok)"></span><b>Yeşil nokta</b> — telefon bağlı</span>
-        <span><span class="dot" style="background:#D1D5DB"></span><b>Nokta yok</b> — telefon bağlı değil</span>
-        <span><span class="dot" style="background:var(--warn)"></span><b>Soluk simge, turuncu nokta</b> — okuyucu duraklatıldı</span>
-      </div>
-      <p>Simgenin üzerine gelince durum yazar (ör. "Bağlı: Kasa telefonu"). <b>Çift tıklamak</b> Günlük penceresini açar.</p>
-
-      <h3>Sağ tık menüsü</h3>
-      <div class="grid2">
-        <div class="menu" aria-label="EczaKod sağ tık menüsü">
-          <div class="t">EczaKod — Kasa</div>
-          <div class="s">Bağlı: Kasa telefonu</div>
-          <hr>
-          <div>Telefon eşleştir…</div>
-          <div>Okuyucuyu duraklat</div>
-          <div>Ayarlar…</div>
-          <div>Günlük…</div>
-          <hr>
-          <div>Güvenlik duvarı izni ver…</div>
-          <div>Yönetici olarak yeniden başlat</div>
-          <hr>
-          <div>Çıkış</div>
-        </div>
-        <div>
-          <p><b>Telefon eşleştir…</b> Yeni telefon eklemek için QR kod gösterir (5 dakika geçerli).</p>
-          <p><b>Okuyucuyu duraklat</b> İşaretliyken telefondan gelen kodlar yazılmaz. Bilgisayarda başka iş yaparken kullanın.</p>
-          <p><b>Ayarlar…</b> Bilgisayar adı, yazma ayarları, sayım klasörü ve eşleşmiş telefonlar (<a href="#ayarlar">Adım 7</a>).</p>
-          <p><b>Günlük…</b> Ne zaman hangi kodun yazıldığı, bağlantılar ve uyarılar.</p>
-          <p><b>Yönetici olarak yeniden başlat</b> Yalnızca eczane stok uygulaması yönetici olarak çalışıyorsa gerekir (<a href="#sorunlar">Sorun giderme</a>).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 -->
-    <section class="doc card" id="telefon">
-      <span class="eyebrow">Adım 3</span>
-      <h2>Telefon uygulaması ve eşleştirme</h2>
-      <p class="lead">Her telefon, kullanacağı bilgisayarla bir kez eşleştirilir. Bir telefon birden çok bilgisayarla (kasa, depo) eşleşebilir.</p>
-      <ol class="steps">
-        <li><b>Uygulamayı kurun</b> EczaKod'u Google Play'den kurun ve açın. Kamera izni istendiğinde <b>İzin ver</b> deyin.</li>
-        <li><b>Aynı ağa bağlanın</b> Telefon, bilgisayarın bağlı olduğu Wi-Fi ağında olmalı.</li>
-        <li><b>Telefona bir ad verin</b> Ayarlar → telefon adı (ör. "Kasa telefonu"). Bu ad bilgisayarda görünür; sonradan değiştirirseniz bilgisayara da yansır.</li>
-        <li><b>QR kodu okutun</b> Bilgisayarda EK simgesi → <b>Telefon eşleştir…</b>. Telefonda <b>Bilgisayar</b> sekmesi → sağ üstteki <b>+</b> → QR'ı kameraya gösterin.</li>
-        <li><b>Bağlandı</b> Telefonun üst kısmında yeşil noktalı bilgisayar adı görünür. Bilgisayarda da "Kasa telefonu bağlandı" bildirimi çıkar.</li>
-      </ol>
-      <div class="callout warn"><p><b>Misafir Wi-Fi'ı kullanmayın.</b> Misafir ağlar cihazların birbirini görmesini engeller; telefon bilgisayarı bulamaz.
-        Telefonu bilgisayarın bağlı olduğu ağa bağlayın. Bilgisayar kabloyla bağlıysa, aynı modemin Wi-Fi'ı yeterlidir.</p></div>
-      <p><b>Birden çok bilgisayar:</b> Telefonun üstündeki bilgisayar adına dokunarak eşleşmiş bilgisayarlar arasında geçebilirsiniz. Son seçilen bilgisayar hatırlanır.
-        Aynı bilgisayara aynı anda tek telefon gönderir; başka telefon bağlanırsa öncekine "Başka telefonda" yazar, <b>Devral</b> ile geri alınır.</p>
-    </section>
-
-    <!-- 4 -->
-    <section class="doc card" id="satis">
-      <span class="eyebrow">Günlük kullanım</span>
-      <h2>Satış ekranına okutma</h2>
-      <div class="shot">
-        <img src="img/tara.webp" alt="Tara ekranı">
-        <div>
-          <ol class="steps">
-            <li><b>Eczane stok uygulamasını hazırlayın</b> Bilgisayarda eczane stok uygulamasının satış ekranını açın, imleç karekod/barkod alanında olsun. Kodlar <b>öndeki pencereye</b> yazılır.</li>
-            <li><b>Kutuları okutun</b> Telefonda <b>Tara</b> sekmesinde kutuları kameraya gösterin. Birden çok kutu aynı anda okunabilir; her kutu bir kez eklenir.</li>
-            <li><b>Gönderin</b> <b>Gönder</b>'e basın. Kodlar sırayla satış ekranına yazılır, bitince telefonda "yazıldı" görünür.</li>
-          </ol>
-          <h3>Tekli ve Toplu mod</h3>
-          <p><span class="chip">⚡ Tekli</span> Okunan kod anında bilgisayara gider; klasik el okuyucusu gibi.
-            Miadı geçmiş kutu kendiliğinden gitmez, listede kırmızı bekler; <b>Gönder</b> ile onaylayarak gönderirsiniz.</p>
-          <p><span class="chip">☰ Toplu</span> Kodlar listede birikir, <b>Gönder</b>'e basınca hepsi gider. Çok kutulu reçetelerde hızlıdır.</p>
-        </div>
-      </div>
-
-      <h3>Kameradaki çerçeve renkleri</h3>
-      <div class="legend">
-        <span><span class="dot" style="background:var(--ok)"></span><b>Yeşil</b> — okundu, listede</span>
-        <span><span class="dot" style="background:var(--bad)"></span><b>Kırmızı</b> — miadı geçmiş</span>
-        <span><span class="dot" style="background:var(--info)"></span><b>Mavi</b> — az önce gönderildi</span>
-        <span><span class="dot" style="background:#fff;border:1px solid #9CA3AF"></span><b>Beyaz</b> — okunuyor</span>
-      </div>
-      <p>Gönderilen kutu kameranın önünde kalırsa tekrar eklenmez. Aynı kutuyu bilerek yeniden göndermek isterseniz (ör. eczane stok uygulamasından silip tekrar),
-        kutuyu kameradan 2 saniye çekip yeniden gösterin.</p>
-
-      <h3>Kamera kontrolleri</h3>
-      <div class="tbl"><table>
-        <tr><th>Kontrol</th><th>Ne işe yarar</th></tr>
-        <tr><td>Yakınlaştırma çubuğu</td><td>Küçük ya da uzaktaki karekodlar için 1×–4× yakınlaştırır.</td></tr>
-        <tr><td>Ekrana dokunma</td><td>Dokunduğunuz yere odaklar. Bulanık karekodda işe yarar.</td></tr>
-        <tr><td>◐ Siyah zemin</td><td>Siyah zemine beyaz basılmış karekodları da okur (biraz yavaşlatır, gerekmedikçe kapalı tutun).</td></tr>
-        <tr><td>Fener</td><td>Loş ortamda kameranın ışığını açar.</td></tr>
-        <tr><td>Liste paneli</td><td>Alttaki "Okunanlar" panelini yukarı çekince tüm liste ve SKT'ler görünür; satırdaki çöp kutusu o kodu siler, başlıktaki kırmızı düğme listeyi boşaltır (geri alınabilir).</td></tr>
-      </table></div>
-
-      <div class="callout key"><p><b>Güvenli yazma:</b> Eczane stok uygulaması bir uyarı penceresi açarsa ya da gönderim sırasında başka bir pencereye tıklanırsa EczaKod yazmayı durdurur
-        ve telefonda nedenini gösterir; kodlar yanlış yere yazılmaz. Yazılmayan kodlar listede kalır, sorunu giderip yeniden gönderirsiniz.
-        Daha önce yazılmış kodlar ikinci kez yazılmaz.</p></div>
-    </section>
-
-    <!-- 5 -->
-    <section class="doc card" id="sayim">
-      <span class="eyebrow">Stok sayımı</span>
-      <h2>Stok sayımı</h2>
-      <p class="lead">Rafları telefonla tarayın, sayım bilgisayara dosya olarak gelsin. WhatsApp ya da e-postayla dosya taşımaya gerek kalmaz.</p>
-      <ol class="steps">
-        <li><b>Sayım sekmesine geçin</b> Telefonda alttaki menüden <b>Sayım</b>'ı seçin.</li>
-        <li><b>Rafı tarayın</b> Kamerayı raf boyunca gezdirin. Her karekodlu kutu <b>bir kez</b> sayılır; aynı kutu tekrar görünse de sayı artmaz.
-          Sayı ve SKT dağılımı ekranın altında anlık görünür.</li>
-        <li><b>Gönderin</b> Bitince <b>Gönder</b>'e basın. Bilgisayarda "Sayım alındı: N kutu" bildirimi çıkar; bildirime tıklayınca dosya klasörde seçili açılır.</li>
-        <li><b>Stok uygulamasına aktarın</b> Dosya varsayılan olarak <code>Belgeler\EczaKod Sayım</code> klasörüne yazılır. Eczane stok uygulamasının sayım aktarma ekranında bu dosyayı seçin.
-          Sayım klasörünü Ayarlar'dan eczane stok uygulamasının kullandığı klasör olarak da belirleyebilirsiniz.</li>
-      </ol>
-      <h3>Kameradaki renkler (son kullanma tarihine göre)</h3>
-      <div class="legend">
-        <span><span class="dot" style="background:var(--bad)"></span><b>Kırmızı</b> — miadı geçmiş</span>
-        <span><span class="dot" style="background:var(--warn)"></span><b>Turuncu</b> — miadı yakın</span>
-        <span><span class="dot" style="background:var(--ok)"></span><b>Yeşil</b> — miadı uzun</span>
-        <span><span class="dot" style="background:var(--info)"></span><b>Mavi</b> — SKT yok</span>
-        <span><span class="dot" style="background:#9CA3AF"></span><b>Gri</b> — sayılmaz</span>
-      </div>
-      <p>"Miadı yakın" süresi telefonda Ayarlar → <b>Miadı yakın sayılan süre</b>'den seçilir (3, 6 ya da 12 ay).</p>
-      <div class="grid2">
-        <div class="callout tip"><p><b>Yalnız seri numaralı karekod sayılır.</b> Barkodlu (seri numarasız) ürünler sayıma girmez; kamerada gri görünür ve "Bu kod sayılmaz" uyarısı çıkar.</p></div>
-        <div class="callout tip"><p><b>Sayım kaybolmaz.</b> Uygulama kapansa ya da telefon yeniden başlasa da sayım kaldığı yerden sürer. Gönderdikten sonra da silinmez; tekrar gönderilebilir.</p></div>
-      </div>
-      <p><b>Sayım ayrıntısı:</b> Alt çubuktaki kutu sayısına dokununca ürünler, miadı en yakın olan önce olacak şekilde listelenir; barkod, seri no ya da lot ile arayabilir, SKT'ye göre süzebilirsiniz.
-        <b>Yeni sayım</b> düğmesi mevcut sayımı onay sorarak siler.</p>
-    </section>
-
-    <!-- 6 -->
-    <section class="doc card" id="gecmis">
-      <span class="eyebrow">Kayıt</span>
-      <h2>Geçmiş</h2>
-      <div class="shot">
-        <img src="img/gecmis.webp" alt="Geçmiş ekranı">
-        <div>
-          <p>Bilgisayara yazılan son 300 kod <b>Geçmiş</b> sekmesinde günlere göre durur. Üstteki kart bugün ve son 7 günde yazılan kod sayısını gösterir.</p>
-          <ul>
-            <li><b>Ara:</b> Barkod, seri numarası ya da lot ile.</li>
-            <li><b>Tekrar gönder:</b> Satırı sola kaydırın.</li>
-            <li><b>Seçerek gönder:</b> Sağ üstteki seç düğmesiyle birden çok kod seçip ya da hepsini seçip gönderin.</li>
-            <li><b>Temizle:</b> Sağ üstteki kırmızı düğme geçmişi siler.</li>
-          </ul>
-          <p>Geçmiş yalnızca telefonda tutulur; geçmişten yeniden gönderilen kodlar geçmişe ikinci kez eklenmez.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7 -->
-    <section class="doc card" id="ayarlar">
-      <span class="eyebrow">Ayarlar</span>
-      <h2>Ayarlar</h2>
-      <p class="lead">Varsayılan ayarlar çoğu eczanede doğrudan çalışır. Kurulumda yalnızca işaretli olanlara bakmanız yeterli.</p>
-
-      <h3>Bilgisayarda (EK simgesi → Ayarlar…)</h3>
-      <p>Pencerede iki sekme vardır: <b>Ayarlar</b> ve <b>Telefonlar</b>. Değişiklikten sonra <b>Kaydet</b>'e basın.</p>
-      <div class="tbl"><table>
-        <tr><th>Ayar</th><th>Ne yapar</th><th>Önerilen</th></tr>
-        <tr><td>Bilgisayar adı</td><td>Telefonda görünen ad. Birden çok bilgisayar varsa ayırt etmeyi kolaylaştırır; değişince telefona da yansır.</td><td><span class="rec">Kasa</span></td></tr>
-        <tr><td>İzinli programlar</td><td>Kodların yalnız bu programa yazılmasını sağlar; başka bir pencere öndeyse yazmaz. Boşsa her pencereye yazar.</td><td><span class="rec">Stok uygulamanızın adı</span></td></tr>
-        <tr><td>Kodlar arası bekleme (ms)</td><td>Eczane stok uygulamasının bir kodu işlemesi için tanınan süre. Kod kaçırılıyorsa artırın.</td><td><span class="rec">400</span></td></tr>
-        <tr><td>Uyarı bekleme süresi (ms)</td><td>Kısa "lütfen bekleyin" pencerelerinin kapanması için en çok bekleme; kapanmazsa yazma durur.</td><td><span class="rec">3000</span></td></tr>
-        <tr><td>Sonek</td><td>Her koddan sonra basılacak tuş (Enter / Tab / yok).</td><td><span class="rec">Enter</span></td></tr>
-        <tr><td>GS ayracı</td><td>Karekoddaki görünmez ayracın nasıl yazılacağı. Kurulumda eczanenin el okuyucusuna göre bir kez ayarlanır.</td><td><span class="rec">Unicode</span></td></tr>
-        <tr><td>Baştaki FNC1'i sil</td><td>Kameranın karekod başına eklediği görünmez karakteri siler (el okuyucuları göndermez).</td><td><span class="rec">Açık</span></td></tr>
-        <tr><td>Klavye düzenine göre tuş</td><td>Açıkken karakter yerine gerçek tuş basar. Yalnızca bazı eski programlarda gerekir.</td><td><span class="rec">Kapalı</span></td></tr>
-        <tr><td>Tuşlar arası bekleme (ms)</td><td>Her tuş arasında bekleme. Karakter kaçıran yavaş bilgisayarlarda 5–10 deneyin.</td><td><span class="rec">0</span></td></tr>
-        <tr><td>Sayım klasörü</td><td>Stok sayımı dosyalarının yazıldığı klasör. Boşsa <code>Belgeler\EczaKod Sayım</code>.</td><td><span class="rec">Boş</span></td></tr>
-        <tr><td>Satır biçimi</td><td>Sayım dosyasında karekodun biçimi: <code>Gs</code> ham karekod, <code>Hri</code> (01)…(21)… biçimi, <code>Plain</code> ayraçsız.</td><td><span class="rec">Gs</span></td></tr>
-        <tr><td>Port</td><td>Telefonun bağlandığı kapı. Değiştirirseniz telefonlar yeniden eşleştirilmelidir.</td><td><span class="rec">8765</span></td></tr>
-        <tr><td>Windows açılınca başlat</td><td>Bilgisayar açılınca EczaKod kendiliğinden çalışır.</td><td><span class="rec">Açık</span></td></tr>
-        <tr><td>Yönetici olarak başlat</td><td>Yalnızca eczane stok uygulaması yönetici olarak çalışıyorsa gerekir; Windows yönetici programlara normal programların yazmasına izin vermez.</td><td><span class="rec">Gerekirse</span></td></tr>
-      </table></div>
-      <p style="margin-top:12px"><b>Telefonlar sekmesi:</b> Eşleşmiş telefonlar ve son bağlantı zamanları. Kaybolan ya da artık kullanılmayan telefonu seçip <b>Seçili telefonu kaldır</b> deyin; o telefon yeniden eşleştirilmeden bağlanamaz.</p>
-
-      <h3>Telefonda (Ayarlar sekmesi)</h3>
-      <div class="tbl"><table>
-        <tr><th>Ayar</th><th>Ne yapar</th><th>Önerilen</th></tr>
-        <tr><td>Telefon adı</td><td>Bilgisayarda görünen ad (ör. Kasa telefonu).</td><td><span class="rec">Kasa telefonu</span></td></tr>
-        <tr><td>Ses / Titreşim</td><td>Her yeni okunan kodda kısa ses ve titreşim.</td><td><span class="rec">Açık</span></td></tr>
-        <tr><td>Siyah zeminli karekod</td><td>Ters renkli karekodları da okur, biraz yavaşlatır.</td><td><span class="rec">Kapalı</span></td></tr>
-        <tr><td>Gönderim</td><td>Tekli: okunan kod anında gider. Toplu: Gönder ile.</td><td><span class="rec">Toplu</span></td></tr>
-        <tr><td>Görüntü kalitesi</td><td>Yüksek, küçük ve uzak karekodlarda daha iyidir; eski telefonlarda yavaşlatabilir.</td><td><span class="rec">Standart</span></td></tr>
-        <tr><td>Miadı yakın sayılan süre</td><td>Stok sayımında turuncu görünecek kutuların SKT sınırı.</td><td><span class="rec">3 ay</span></td></tr>
-      </table></div>
-    </section>
-
-    <!-- 8 -->
-    <section class="doc card" id="sorunlar">
-      <span class="eyebrow">Yardım</span>
-      <h2>Sorun giderme</h2>
-      <p class="lead">Telefon, gönderim durursa nedenini yazar. Aynı mesaj bilgisayarda EK simgesi → <b>Günlük…</b>'te de görünür.</p>
-
-      <details open><summary>Telefon "Bağlı değil" diyor</summary><div>
-        <ol>
-          <li>Bilgisayarda EK simgesi var mı? Yoksa Başlat menüsünden EczaKod'u açın.</li>
-          <li>Telefon ve bilgisayar aynı ağda mı? Misafir Wi-Fi'ı değil, bilgisayarın ağını kullanın.</li>
-          <li>EK simgesi → <b>Güvenlik duvarı izni ver…</b> → Evet.</li>
-          <li>Telefonda üstteki bilgisayar adına dokunup doğru bilgisayarın seçili olduğuna bakın.</li>
-        </ol></div></details>
-
-      <details><summary>"Eşleşme geçersiz" ya da "Bilgisayar bu telefonu tanımıyor"</summary><div>
-        <p>Telefon bilgisayarın listesinden kaldırılmış. EK simgesi → <b>Telefon eşleştir…</b> ile QR'ı yeniden okutun.</p></div></details>
-
-      <details><summary>"Ön plandaki program izinli değil"</summary><div>
-        <p>Gönder'e basıldığında önde eczane stok uygulaması değil başka bir pencere vardı. Eczane stok uygulamasının satış ekranını öne alıp yeniden gönderin.
-          Eczane stok uygulamasında da bu uyarı çıkıyorsa Ayarlar → <b>İzinli programlar</b>'daki adı Günlük'teki "Hedef pencere" satırında yazan süreç adıyla değiştirin.</p></div></details>
-
-      <details><summary>"Yönetici olarak çalışıyor" uyarısı</summary><div>
-        <p>Eczane stok uygulaması yönetici olarak açılmış; Windows, normal programların ona yazmasına izin vermez. EK simgesi → <b>Yönetici olarak yeniden başlat</b>.
-          Kalıcı olsun diye Ayarlar → <b>Yönetici olarak başlat</b>'ı işaretleyin.</p></div></details>
-
-      <details><summary>Gönderim yarıda durdu</summary><div>
-        <p>Eczane stok uygulaması bir uyarı penceresi açtıysa (ör. miad, İTS uyarısı) EczaKod güvenlik için durur. Uyarıyı kapatın, satış ekranına dönün ve <b>Gönder</b>'e yeniden basın;
-          yazılmış olanlar ikinci kez yazılmaz.</p></div></details>
-
-      <details><summary>Bazı kodlar eczane stok uygulamasına eksik ya da yanlış düşüyor</summary><div>
-        <p>Ayarlar → <b>Kodlar arası bekleme</b>'yi 400'den 600'e çıkarın. Seri numarası ile tarih birbirine karışıyorsa <b>GS ayracı</b> ayarını değiştirmek gerekir; bu ayar eczanedeki el okuyucusunun gönderdiğine göre seçilir.</p></div></details>
-
-      <details><summary>"Okuyucu duraklatıldı" / "Başka telefonda"</summary><div>
-        <p><b>Duraklatıldı:</b> EK simgesi → <b>Okuyucuyu duraklat</b> işaretini kaldırın. <b>Başka telefonda:</b> Aynı bilgisayara başka bir telefon bağlanmış; telefonda <b>Devral</b>'a basın.</p></div></details>
-
-      <details><summary>Karekod okunmuyor</summary><div>
+    <article class="ozellik">
+      <div class="metin">
+        <h2>Reçetedeki kutuların hepsini tek seferde okutun</h2>
+        <p>Kutuları tezgâha yan yana koyup kamerayı tutun. Okunan her karekod yeşil çerçeveyle işaretlenir ve listeye bir kez girer;
+          ürün adı, son kullanma tarihi ve parti numarası hemen görünür.</p>
         <ul>
-          <li>Kutuyu kameraya paralel tutun; parlaklık yansıyorsa hafifçe eğin.</li>
-          <li>Ekranda karekoda dokunarak odaklayın, gerekirse yakınlaştırın.</li>
-          <li>Siyah zemine beyaz basılmış karekodlar için ◐ düğmesini açın.</li>
-          <li>Loş ortamda feneri açın.</li>
-        </ul></div></details>
+          <li><b>Biriktir:</b> kodlar listede toplanır, Gönder'e basınca hepsi yazılır.</li>
+          <li><b>Anında:</b> okunan kod hemen yazılır; klasik el okuyucusu gibi.</li>
+          <li>Eğik tutulan, küçük ya da siyah zemine basılmış karekodlar için yakınlaştırma, fener ve ters renk okuma.</li>
+        </ul>
+      </div>
+      <div class="gorsel">
+        <figure class="telefon"><img src="img/ekran/tara.webp" alt="Tara ekranı: altı ilaç kutusunun karekodu yeşil çerçeveyle okunmuş" loading="lazy"></figure>
+        <figure class="telefon"><img src="img/ekran/tara-liste.webp" alt="Okunanlar listesi: altı ilaç, her birinde SKT etiketi, lot ve seri numarası" loading="lazy"></figure>
+      </div>
+    </article>
 
-      <details><summary>Windows kurulumu engelliyor</summary><div>
-        <p>"Windows kişisel bilgisayarınızı korudu" penceresinde <b>Ek bilgi → Yine de çalıştır</b>. Kurumsal bilgisayarlarda yönetici izni gerekebilir.</p></div></details>
-    </section>
+    <article class="ozellik ters">
+      <div class="metin">
+        <h2>Satışta fiyat, tür ve KDV ekranda</h2>
+        <p>Satış ekranında okutulan ürünün öneri satış fiyatı, ürün tipi ve KDV oranı görünür; sepet toplamı kendiliğinden hesaplanır.
+          Kutu elde değilse ürün adıyla fiyat arayabilirsiniz.</p>
+        <ul>
+          <li>Sepet bilgisayar kapalıyken de çalışır: toplamı müşteriye büyük ekranda gösterin, sepeti kaydedip sonra gönderin.</li>
+          <li>Kayıtlı sepetler gün gün durur; gün sonunda gönderilmeyenlerin toplamı ve Excel dökümü hazırdır.</li>
+          <li>Fiyat listesi düzenli güncellenir; telefon yalnızca değişen fiyatları indirir.</li>
+        </ul>
+      </div>
+      <div class="gorsel">
+        <figure class="telefon"><img src="img/ekran/satis-barkod.webp" alt="Satış ekranı: barkodlu dermokozmetik ürün sepete eklendi, 130,00 TL, KDV yüzde 20" loading="lazy"></figure>
+        <figure class="telefon"><img src="img/ekran/sepet.webp" alt="Sepet: ürünler, SKT, ürün tipi ve KDV etiketleri, toplam 1.029,02 TL" loading="lazy"></figure>
+      </div>
+    </article>
 
-    <!-- 9 -->
-    <section class="doc card" id="guncelleme">
-      <span class="eyebrow">Bakım</span>
-      <h2>Güncelleme ve kaldırma</h2>
-      <div class="grid2">
-        <div>
-          <h3 style="margin-top:6px">Güncelleme</h3>
-          <p>Aynı <a href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">indirme bağlantısından</a> yeni kurulumu indirip çalıştırın.
-            Eski sürümün üzerine kurulur; eşleşmiş telefonlar ve ayarlar korunur, telefonları yeniden eşleştirmeniz gerekmez.
-            Telefon uygulaması Google Play'den kendiliğinden güncellenir.</p>
-        </div>
-        <div>
-          <h3 style="margin-top:6px">Kaldırma</h3>
-          <p>Windows Ayarlar → Uygulamalar → <b>EczaKod</b> → Kaldır. Güvenlik duvarı izinleri de kaldırılır.
-            Eşleşmeler ve ayarlar <code>%APPDATA%\EczaKod</code> klasöründe kalır; tamamen silmek için bu klasörü de silin.</p>
+    <article class="ozellik">
+      <div class="metin">
+        <h2>Miadı geçmiş kutu satıştan önce yakalanır</h2>
+        <p>Karekoddaki son kullanma tarihi her okumada kontrol edilir. Miadı geçmiş kutuda kırmızı uyarı çıkar ve ayrı bir uyarı sesi çalar;
+          kutu siz onaylamadan sepete ya da programa gitmez.</p>
+        <ul>
+          <li>Kamerada çerçeve rengi miadı söyler: yeşil uzun, turuncu yakın, kırmızı geçmiş.</li>
+          <li>"Miadı yakın" sınırını eczanenize göre seçin: 3, 6 ya da 12 ay.</li>
+        </ul>
+      </div>
+      <div class="gorsel">
+        <figure class="telefon"><img src="img/ekran/miad.webp" alt="Miadı geçmiş kutu uyarısı: PAROL 500MG 30 TABLET, SKT 03/2026" loading="lazy"></figure>
+        <figure class="telefon"><img src="img/ekran/fiyatbak-miad.webp" alt="Fiyat bak kartı: miadı geçmiş etiketi, ürün tipi ve KDV" loading="lazy"></figure>
+      </div>
+    </article>
+
+    <article class="ozellik ters">
+      <div class="metin">
+        <h2>Stok sayımı rafın önünde biter</h2>
+        <p>Kamerayı raf boyunca gezdirin; her karekodlu kutu bir kez sayılır, aynı kutu tekrar görünse de sayı artmaz.
+          Sayım bitince Gönder'e basın, kodlar eczane programının sayım ekranına yazılsın.</p>
+        <ul>
+          <li>Rafa, depoya ya da soğuk zincire göre adlı sayımlar; uygulama kapansa da kaldığı yerden sürer.</li>
+          <li>Sayım ayrıntısında ürünler miadı en yakın olandan başlar; geçmiş ve yakın kutular hemen görünür.</li>
+          <li>İsterseniz sayımı TXT, miad raporunu Excel olarak paylaşın.</li>
+        </ul>
+      </div>
+      <div class="gorsel">
+        <figure class="telefon"><img src="img/ekran/sayim.webp" alt="Sayım ekranı: raftaki on iki kutu, çerçeveler miada göre yeşil, turuncu ve kırmızı" loading="lazy"></figure>
+        <figure class="telefon"><img src="img/ekran/sayim-ayrinti.webp" alt="Sayım ayrıntısı: 12 kutu, 1 miadı geçmiş, 2 yakın, 9 uzun" loading="lazy"></figure>
+      </div>
+    </article>
+
+    <article class="ozellik">
+      <div class="metin">
+        <h2>Yanlış pencereye tek karakter yazmaz</h2>
+        <p>EczaKod yalnızca seçtiğiniz eczane programına yazar. Gönderim sırasında program bir uyarı açarsa ya da başka bir pencere öne gelirse
+          yazmayı durdurur ve nedenini telefonda gösterir. Yazılmış kodlar ikinci kez yazılmaz.</p>
+        <ul>
+          <li>Bilgisayara yazılan son 300 kod Geçmiş'te durur; gerekirse tek dokunuşla yeniden gönderilir.</li>
+          <li>Telefon ile bilgisayar yalnızca eczanenin ağında, şifreli bağlantıyla konuşur; QR kodla bir kez eşleştirilir.</li>
+          <li>Bir telefon kasa ve depo gibi birden çok bilgisayarla eşleşebilir.</li>
+        </ul>
+      </div>
+      <div class="gorsel">
+        <figure class="telefon"><img src="img/ekran/gecmis.webp" alt="Geçmiş: bugün 6 kod yazıldı, ürünler ve SKT etiketleri" loading="lazy"></figure>
+        <figure class="telefon"><img src="img/ekran/bilgisayar.webp" alt="Bilgisayar ekranı: KASA-1 bağlı, şifreli bağlantı, bugün 6 kod yazıldı" loading="lazy"></figure>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="bolum gri">
+  <div class="ic">
+    <div class="bolum-bas"><h2>Küçük ama her gün işe yarayanlar</h2></div>
+    <div class="kucukler">
+      <div><h3>Ad ile fiyat arama</h3><p>Kutu elde yokken ürün adının bir kısmını yazın; fiyat ve barkod listelensin.</p></div>
+      <div><h3>Müşteriye göster</h3><p>Sepet toplamı tam ekranda, büyük rakamlarla; telefonu çevirip gösterin.</p></div>
+      <div><h3>Barkodlu ürünler</h3><p>Dermokozmetik ve takviye gibi yalnız çizgi barkodlu ürünler de okunur, fiyatı görünür.</p></div>
+      <div><h3>Elle fiyat</h3><p>Listede olmayan ürüne bir kez fiyat girin; aynı barkod sonra o fiyatla gelir.</p></div>
+      <div><h3>Karanlık mod ve büyük yazı</h3><p>Telefonun karanlık modu ve yazı boyutu ayarına uyar.</p></div>
+      <div><h3>İnternetsiz çalışır</h3><p>Okuma ve gönderim yalnızca eczanenin ağını kullanır; fiyat listesi Wi-Fi'da güncellenir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bolum" id="nasil">
+  <div class="ic">
+    <div class="bolum-bas">
+      <h2>Üç adımda kurulur</h2>
+      <p>Kurulum yaklaşık on dakika sürer ve bir kez yapılır. Ayrıntılı anlatım <a href="kurulum.html">Kurulum ve kullanım</a> sayfasında.</p>
+    </div>
+    <ol class="adimlar">
+      <li><h3>Bilgisayara kurun</h3><p>EczaKod'u eczane programının çalıştığı bilgisayara kurun. Saatin yanında kırmızı EK simgesiyle arka planda çalışır.</p></li>
+      <li><h3>Telefonu eşleştirin</h3><p>Uygulamayı açın, bilgisayardaki QR kodu okutun. Telefon ve bilgisayar aynı Wi-Fi ağında olmalı.</p></li>
+      <li><h3>Okutup gönderin</h3><p>Eczane programında satış ekranını açın, kutuları okutun ve Gönder'e basın. Kodlar sırayla yazılır.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="bolum gri" id="indir">
+  <div class="ic iki-sutun">
+    <div>
+      <h2>Neler gerekiyor?</h2>
+      <ul class="gereksinim" style="margin-top: 28px">
+        <li><b>Bilgisayar</b><span>Windows 10 ya da 11, 64 bit</span></li>
+        <li><b>Eczane programı</b><span>Karekodu klavyeden kabul eden her program; el okuyucusuyla çalışıyorsa EczaKod'la da çalışır</span></li>
+        <li><b>Telefon</b><span>Android ya da iPhone; arka kamerası olan güncel bir telefon</span></li>
+        <li><b>Ağ</b><span>Telefon ve bilgisayar aynı Wi-Fi ağında (misafir ağı değil)</span></li>
+        <li><b>İnternet</b><span>Yalnızca kurulum ve fiyat listesi güncellemesi için</span></li>
+      </ul>
+    </div>
+    <div class="indir-kutu">
+      <h2>EczaKod'u indirin</h2>
+      <p>Bilgisayar programı her zaman en güncel sürümle iner. Kurulum yaklaşık iki dakika sürer.</p>
+      <a class="dugme ana" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        Windows için indir
+      </a>
+      <div class="ayrac">
+        <p>Telefon uygulaması mağazalara yükleniyor. Erken erişim için <a href="iletisim.html" style="color:#fff">bize yazın</a>.</p>
+        <div class="magazalar">
+          <span class="magaza-sar"><span class="yakinda">Çok yakında</span>
+            <a class="magaza" aria-disabled="true" role="link" tabindex="-1" data-magaza="play">
+              <svg width="26" height="28" viewBox="0 0 26 28" aria-hidden="true"><path fill="#34A853" d="M1.2.6 14.4 14 1.2 27.4c-.5-.3-.8-.9-.8-1.6V2.2c0-.7.3-1.3.8-1.6z"/><path fill="#FBBC04" d="m18.8 9.6-4.4 4.4 4.4 4.4 5-2.8c1.4-.8 1.4-2.4 0-3.2z"/><path fill="#EA4335" d="M1.2 27.4 14.4 14l4.4 4.4L3.4 27.2c-.8.4-1.6.5-2.2.2z"/><path fill="#4285F4" d="M1.2.6c.6-.3 1.4-.2 2.2.2l15.4 8.8-4.4 4.4z"/></svg>
+              <div><small>Şuradan alın</small><span>Google Play</span></div>
+            </a></span>
+          <span class="magaza-sar"><span class="yakinda">Çok yakında</span>
+            <a class="magaza" aria-disabled="true" role="link" tabindex="-1" data-magaza="appstore">
+              <svg width="24" height="28" viewBox="0 0 24 28" aria-hidden="true"><path fill="#fff" d="M19.7 14.9c0-3.2 2.6-4.7 2.7-4.8-1.5-2.2-3.8-2.5-4.6-2.5-2-.2-3.8 1.2-4.8 1.2s-2.5-1.1-4.2-1.1C6.7 7.8 4.6 9 3.5 11c-2.3 4-.6 9.9 1.7 13.1 1.1 1.6 2.4 3.4 4.1 3.3 1.6-.1 2.3-1.1 4.2-1.1s2.5 1.1 4.2 1 2.8-1.6 3.8-3.2c1.2-1.8 1.7-3.6 1.7-3.7-.1 0-3.5-1.3-3.5-5.5zM16.6 5.4c.9-1.1 1.5-2.6 1.3-4.1-1.3.1-2.8.9-3.7 1.9-.8.9-1.5 2.4-1.3 3.9 1.4.1 2.8-.7 3.7-1.7z"/></svg>
+              <div><small>Şuradan indirin</small><span>App Store</span></div>
+            </a></span>
         </div>
       </div>
-      <div class="callout tip"><p><b>Gizlilik:</b> Hasta ve reçete bilgisi toplanmaz. Kamera görüntüsü yalnızca telefonda işlenir. Kodlar internete değil, yalnızca eczanedeki bilgisayara şifreli bağlantıyla gider.
-        Ayrıntılar: <a href="gizlilik.html">Gizlilik politikası</a>.</p></div>
-    </section>
+    </div>
+  </div>
+</section>
 
-  </main>
-</div>
+<section class="bolum" id="sss">
+  <div class="ic">
+    <div class="bolum-bas"><h2>Sık sorulanlar</h2></div>
+    <div class="sss">
+      <details><summary>Hangi eczane programlarıyla çalışır?</summary>
+        <div><p>Karekodu klavyeden kabul eden her programla. EczaKod kodları bilgisayara el tipi barkod okuyucu gibi yazar; eczanenizde
+          okuyucuyla satış ekranına karekod girebiliyorsanız EczaKod'la da girebilirsiniz. Kurulumda kodlar arası bekleme ve ayraç ayarı
+          programınıza göre bir kez yapılır.</p></div></details>
+      <details><summary>İTS bildirimini EczaKod mu yapıyor?</summary>
+        <div><p>Hayır. EczaKod yalnızca karekodu eczane programınıza yazar; İTS bildirimi her zamanki gibi eczane programınız tarafından yapılır.</p></div></details>
+      <details><summary>Hasta ya da reçete bilgisi görüyor mu?</summary>
+        <div><p>Hayır. EczaKod yalnızca kutunun üzerindeki karekodu okur: ürün numarası, seri numarası, parti ve son kullanma tarihi.
+          Hesap açmanız gerekmez, kodlar internete değil yalnızca eczanedeki bilgisayara gider. Ayrıntılar <a href="gizlilik.html">gizlilik politikasında</a>.</p></div></details>
+      <details><summary>İnternet gerekiyor mu?</summary>
+        <div><p>Okuma ve gönderim için hayır; telefon ve bilgisayar eczanenin Wi-Fi ağı üzerinden konuşur. İnternet yalnızca programı indirmek
+          ve fiyat listesini güncellemek için gerekir.</p></div></details>
+      <details><summary>Fiyatlar nereden geliyor, eczane programına gidiyor mu?</summary>
+        <div><p>Telefonda gösterilen fiyatlar öneri satış fiyatıdır ve düzenli güncellenen bir listeden gelir. Fiyat eczane programına gönderilmez;
+          satışta programınızdaki fiyat esastır.</p></div></details>
+      <details><summary>Bilgisayar kapalıyken ya da elektrik kesildiğinde ne olur?</summary>
+        <div><p>Satış ekranı telefonda çalışmaya devam eder: ürünleri okutup toplamı görürsünüz, sepeti kaydedersiniz. Bilgisayar açılınca kayıtlı
+          sepeti tek dokunuşla programa gönderirsiniz.</p></div></details>
+      <details><summary>Birden çok telefon ya da bilgisayar kullanabilir miyim?</summary>
+        <div><p>Evet. Bir telefon kasa ve depo gibi birden çok bilgisayarla eşleşebilir, bilgisayarlar arasında üstteki addan geçilir.
+          Aynı bilgisayara aynı anda bir telefon yazar; başka telefon bağlanınca "Devral" ile geri alınır.</p></div></details>
+      <details><summary>Ücretli mi?</summary>
+        <div><p>EczaKod şu an pilot eczanelerle deneniyor. Eczanenizde denemek isterseniz <a href="iletisim.html">bize yazın</a>; kurulumda birlikte ilerleyelim.</p></div></details>
+    </div>
+  </div>
+</section>
 
-<footer>
-  <div class="in">
-    <img src="img/logo-dark.png" alt="EczaKod" style="height:22px;width:auto">
-    <span>Eczaneler için toplu karekod okuyucu</span>
-    <span style="margin-left:auto"><a href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a> · <a href="gizlilik.html">Gizlilik</a> · <a href="mailto:destek@eczakod.com">destek@eczakod.com</a></span>
+<section class="cagri">
+  <div class="ic">
+    <div>
+      <h2>Eczanenizde birlikte deneyelim</h2>
+      <p>Kurulumu birlikte yapalım, eczane programınıza göre ayarlayalım.</p>
+    </div>
+    <a class="dugme" href="iletisim.html">Bize ulaşın</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="alt">
+  <div class="ic">
+    <div>
+      <img src="img/logo-dark.png" alt="EczaKod">
+      <p>Eczaneler için toplu karekod okuyucu.</p>
+    </div>
+    <div><h3>Ürün</h3><ul><li><a href="./#ozellikler">Özellikler</a></li><li><a href="./#indir">İndir</a></li><li><a href="./#sss">Sık sorulanlar</a></li></ul></div>
+    <div><h3>Yardım</h3><ul><li><a href="kurulum.html">Kurulum ve kullanım</a></li><li><a href="kurulum.html#sorunlar">Sorun giderme</a></li><li><a href="iletisim.html">İletişim</a></li></ul></div>
+    <div><h3>Kurumsal</h3><ul><li><a href="gizlilik.html">Gizlilik politikası</a></li><li><a href="mailto:destek@eczakod.com">destek@eczakod.com</a></li></ul></div>
+    <p class="telif">© 2026 EczaKod. Görsellerdeki ürün adları ve fiyatlar örnektir; seri numaraları ve tarihler uydurmadır.</p>
   </div>
 </footer>
 
+<script src="js/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurulum ve kullanım · EczaKod</title>
+<meta name="description" content="EczaKod bilgisayar programının kurulumu, telefonun eşleştirilmesi, satış ekranına okutma, Satış ve fiyat, stok sayımı, ayarlar ve sorun giderme.">
+<link rel="icon" href="img/mark.png">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe geç</a>
+
+<header class="ust">
+  <div class="ic">
+    <a class="logo" href="./"><img src="img/logo.png" alt="EczaKod ana sayfa"></a>
+    <button class="menu-dugme" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="menu">
+      <a href="./#ozellikler">Özellikler</a>
+      <a href="kurulum.html" aria-current="page">Kurulum ve kullanım</a>
+      <a href="./#sss">Sık sorulanlar</a>
+      <a href="iletisim.html">İletişim</a>
+      <a class="dugme ana kucuk" href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">Windows için indir</a>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik">
+<div class="sayfa-bas">
+  <div class="ic">
+    <h1>Kurulum ve kullanım</h1>
+    <p>Bilgisayar programı bir kez kurulur, telefon bir kez eşleştirilir. Sonrası kutuları okutup Gönder'e basmaktan ibaret.
+      Takıldığınız yerde <a href="#sorunlar">Sorun giderme</a> bölümüne bakın ya da <a href="iletisim.html">bize yazın</a>.</p>
+  </div>
+</div>
+
+<div class="ic rehber">
+  <nav class="icindekiler" aria-label="İçindekiler">
+    <p>Bu sayfada</p>
+    <ol>
+      <li class="grup">Kurulum</li>
+      <li><a href="#bilgisayar">Bilgisayar kurulumu</a></li>
+      <li><a href="#gorev-cubugu">Görev çubuğundan erişim</a></li>
+      <li><a href="#esleme">Telefon ve eşleştirme</a></li>
+      <li class="grup">Günlük kullanım</li>
+      <li><a href="#okutma">Satış ekranına okutma</a></li>
+      <li><a href="#satis">Satış ve fiyat</a></li>
+      <li><a href="#sayim">Stok sayımı</a></li>
+      <li><a href="#gecmis">Geçmiş</a></li>
+      <li class="grup">Ayarlar ve yardım</li>
+      <li><a href="#ayarlar">Ayarlar</a></li>
+      <li><a href="#sorunlar">Sorun giderme</a></li>
+      <li><a href="#guncelleme">Güncelleme ve kaldırma</a></li>
+    </ol>
+  </nav>
+
+  <div>
+    <section class="konu" id="bilgisayar">
+      <h2>Bilgisayar kurulumu</h2>
+      <p class="giris-metni">Eczane programının çalıştığı kasa bilgisayarına bir kez kurulur. Yaklaşık iki dakika sürer.</p>
+      <ol class="sira">
+        <li><b>Kurulum dosyasını indirin</b>
+          <a href="https://github.com/emreatasoy/eczakod-web/releases/latest/download/EczaKod-Kurulum.exe">EczaKod-Kurulum.exe</a> dosyasını indirip çift tıklayın.
+          Bağlantı her zaman en güncel sürümü indirir.</li>
+        <li><b>Windows uyarısını geçin</b>
+          Mavi "Windows kişisel bilgisayarınızı korudu" penceresi çıkarsa <b>Ek bilgi</b>'ye, ardından <b>Yine de çalıştır</b>'a basın.
+          "Bu uygulamanın cihazınızda değişiklik yapmasına izin veriyor musunuz?" sorusuna <b>Evet</b> deyin.</li>
+        <li><b>Kurulum sihirbazını tamamlayın</b>
+          <b>Windows açılınca EczaKod'u başlat</b> seçeneğini işaretli bırakın; bilgisayar her açıldığında EczaKod kendiliğinden çalışır. Kur → Son.</li>
+        <li><b>Güvenlik duvarı izni kendiliğinden verilir</b>
+          Telefonun bilgisayara bağlanabilmesi için gereken Windows Güvenlik Duvarı izni kurulumda eklenir.</li>
+        <li><b>Eşleştirme penceresi açılır</b>
+          İlk açılışta "Telefon eşleştir" penceresi ve bir QR kod görünür. Telefonu hazırlayınca bu QR'ı okutacaksınız (<a href="#esleme">Telefon ve eşleştirme</a>).</li>
+      </ol>
+      <div class="not-kutu bilgi">EczaKod bir pencere programı değildir; saatin yanındaki simgede, arka planda çalışır. Pencereyi kapatmak programı kapatmaz.</div>
+    </section>
+
+    <section class="konu" id="gorev-cubugu">
+      <h2>EczaKod'a görev çubuğundan ulaşma</h2>
+      <p class="giris-metni">Ekranın sağ altında, saatin yanında kırmızı <b>EK</b> simgesi bulunur. Bütün işlemler bu simgeden yapılır.</p>
+      <div class="tepsi" aria-hidden="true"><span>^</span><span class="ek">EK</span><span>14:32<br>19.10.2026</span></div>
+      <h3>Simge görünmüyorsa</h3>
+      <ul>
+        <li><b>Gizli simgelere bakın:</b> saatin solundaki <kbd>^</kbd> okuna tıklayın; EczaKod simgesi açılan kutudadır.</li>
+        <li><b>Görev çubuğuna sabitleyin:</b> simgeyi o kutudan sürükleyip saatin yanına bırakın.</li>
+        <li><b>Hiç yoksa programı başlatın:</b> Başlat menüsüne EczaKod yazıp açın. Program zaten açıksa ikinci kopya açılmaz.</li>
+      </ul>
+      <h3>Simgenin anlamı</h3>
+      <div class="renkler">
+        <span style="--r: var(--okundu)">Yeşil nokta: telefon bağlı</span>
+        <span style="--r: #C9CED6">Nokta yok: telefon bağlı değil</span>
+        <span style="--r: var(--yakin)">Turuncu nokta: okuyucu duraklatıldı</span>
+      </div>
+      <p>Simgenin üzerine gelince durum yazar ("Bağlı: Kasa telefonu"). Çift tıklamak Günlük penceresini açar.</p>
+      <h3>Sağ tık menüsü</h3>
+      <div class="menu-aciklama">
+        <div class="sag-menu" aria-hidden="true">
+          <div class="ust-satir">EczaKod · Kasa</div><div class="soluk">Bağlı: Kasa telefonu</div><hr>
+          <div>Telefon eşleştir…</div><div>Okuyucuyu duraklat</div><hr>
+          <div>Ayarlar…</div><div>Günlük…</div><div>Güvenlik duvarı izni ver…</div><div>Yönetici olarak yeniden başlat</div><hr><div>Çıkış</div>
+        </div>
+        <dl>
+          <dt>Telefon eşleştir…</dt><dd>Yeni telefon eklemek için QR kod gösterir; kod 5 dakika geçerlidir.</dd>
+          <dt>Okuyucuyu duraklat</dt><dd>İşaretliyken telefondan gelen kodlar yazılmaz. Bilgisayarda başka iş yaparken kullanın.</dd>
+          <dt>Ayarlar…</dt><dd>Bilgisayar adı, yazma ayarları ve eşleşmiş telefonlar (<a href="#ayarlar">Ayarlar</a>).</dd>
+          <dt>Günlük…</dt><dd>Hangi kodun ne zaman yazıldığı, bağlantılar ve uyarılar.</dd>
+          <dt>Yönetici olarak yeniden başlat</dt><dd>Yalnızca eczane programı yönetici olarak çalışıyorsa gerekir.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="konu" id="esleme">
+      <h2>Telefon uygulaması ve eşleştirme</h2>
+      <p class="giris-metni">Her telefon, kullanacağı bilgisayarla bir kez eşleştirilir. Bir telefon kasa ve depo gibi birden çok bilgisayarla eşleşebilir.</p>
+      <div class="yanyana">
+        <ol class="sira">
+          <li><b>Uygulamayı kurun</b>
+            EczaKod telefon uygulaması Google Play ve App Store'da çok yakında. Erken erişim için <a href="iletisim.html">bize yazın</a>.
+            Uygulamayı açınca kamera izni istenir; <b>İzin ver</b> deyin.</li>
+          <li><b>Aynı ağa bağlanın</b> Telefon, bilgisayarın bağlı olduğu Wi-Fi ağında olmalı.</li>
+          <li><b>Telefona bir ad verin</b> Ayarlar → Bu telefon (ör. "Kasa telefonu"). Bu ad bilgisayarda görünür.</li>
+          <li><b>QR kodu okutun</b> Bilgisayarda EK simgesi → <b>Telefon eşleştir…</b>. Telefonda <b>Bilgisayar</b> sekmesi → sağ üstteki <b>Ekle</b> → QR'ı kameraya gösterin.
+            QR okunamazsa ekrandaki kodu elle de yazabilirsiniz.</li>
+          <li><b>Bağlandı</b> Telefonun üstünde yeşil noktalı bilgisayar adı görünür; bilgisayarda da bildirim çıkar.</li>
+        </ol>
+        <figure class="telefon"><img src="img/ekran/bilgisayar.webp" alt="Bilgisayar sekmesi: KASA-1 bağlı" loading="lazy"></figure>
+      </div>
+      <div class="not-kutu dikkat"><b>Misafir Wi-Fi'ı kullanmayın.</b> Misafir ağlar cihazların birbirini görmesini engeller; telefon bilgisayarı bulamaz.
+        Bilgisayar kabloyla bağlıysa aynı modemin Wi-Fi'ı yeterlidir.</div>
+      <p><b>Birden çok bilgisayar:</b> telefonun üstündeki bilgisayar adına dokunarak eşleşmiş bilgisayarlar arasında geçersiniz; son seçilen hatırlanır.
+        Aynı bilgisayara aynı anda bir telefon yazar; başka telefon bağlanınca öncekinde "Başka telefonda" yazar, <b>Devral</b> ile geri alınır.</p>
+    </section>
+
+    <section class="konu" id="okutma">
+      <h2>Satış ekranına okutma</h2>
+      <p class="giris-metni">Tara sekmesi kasadaki el okuyucusunun yerini alır: okunan karekodlar eczane programının açık penceresine yazılır.</p>
+      <div class="yanyana">
+        <ol class="sira">
+          <li><b>Eczane programını hazırlayın</b> Satış ekranını açın, imleç karekod alanında olsun. Kodlar öndeki pencereye yazılır.</li>
+          <li><b>Kutuları okutun</b> Tara sekmesinde kutuları kameraya gösterin. Birden çok kutu aynı anda okunur; her kutu listeye bir kez girer.</li>
+          <li><b>Gönderin</b> Gönder'e basın. Kodlar sırayla yazılır, bitince "6 kod bilgisayara yazıldı" gibi bir bildirim çıkar.</li>
+        </ol>
+        <figure class="telefon"><img src="img/ekran/tara.webp" alt="Tara ekranı: kutular yeşil çerçeveyle okunmuş" loading="lazy"></figure>
+      </div>
+      <h3>Anında ve Biriktir</h3>
+      <div class="tablo"><table>
+        <tr><td>Anında</td><td>Okunan kod hemen bilgisayara gider; klasik el okuyucusu gibi. Miadı geçmiş kutu kendiliğinden gitmez, listede kırmızı bekler.</td></tr>
+        <tr><td>Biriktir</td><td>Kodlar listede toplanır, Gönder'e basınca hepsi gider. Çok kutulu reçetelerde hızlıdır.</td></tr>
+      </table></div>
+      <h3>Kameradaki çerçeve renkleri</h3>
+      <div class="renkler">
+        <span style="--r: var(--okundu)">Yeşil: okundu, listede</span>
+        <span style="--r: var(--gecmis)">Kırmızı: miadı geçmiş</span>
+        <span style="--r: #2563EB">Mavi: az önce gönderildi</span>
+        <span style="--r: #C9CED6">Beyaz: okunuyor</span>
+      </div>
+      <p>Gönderilen kutu kameranın önünde kalırsa tekrar eklenmez. Aynı kutuyu bilerek yeniden göndermek için kutuyu kameradan iki saniye çekip yeniden gösterin.</p>
+      <h3>Kamera kontrolleri</h3>
+      <div class="tablo"><table>
+        <tr><th>Kontrol</th><th>Ne işe yarar</th></tr>
+        <tr><td>Yakınlaştırma çubuğu</td><td>Küçük ya da uzaktaki karekodlar için yakınlaştırır; iki parmakla da yakınlaşır.</td></tr>
+        <tr><td>Ekrana dokunma</td><td>Dokunduğunuz yere odaklar. Bulanık karekodda işe yarar.</td></tr>
+        <tr><td>Fener</td><td>Loş ortamda kameranın ışığını açar.</td></tr>
+        <tr><td>Okunanlar paneli</td><td>Yukarı çekince liste, SKT, lot ve seri numaraları görünür; satır sola kaydırılınca silinir.</td></tr>
+      </table></div>
+      <div class="not-kutu onemli"><b>Güvenli yazma:</b> eczane programı bir uyarı penceresi açarsa ya da gönderim sırasında başka bir pencereye tıklanırsa EczaKod yazmayı durdurur
+        ve telefonda nedenini gösterir. Yazılmayan kodlar listede kalır; sorunu giderip yeniden gönderirsiniz. Yazılmış kodlar ikinci kez yazılmaz.</div>
+    </section>
+
+    <section class="konu" id="satis">
+      <h2>Satış ve fiyat</h2>
+      <p class="giris-metni">Satış sekmesi okutulan ürünün öneri satış fiyatını ve sepetin toplamını gösterir. Bilgisayardan bağımsız çalışır;
+        bilgisayar bağlıysa sepet eczane programına gönderilir. Fiyat programa gitmez, satışta programdaki fiyat esastır.</p>
+      <div class="yanyana">
+        <ol class="sira">
+          <li><b>Okutun</b> Karekodlu ya da barkodlu ürünü okutun. Kartta ad, firma, SKT, ürün tipi, KDV ve fiyat görünür; ürün sepete girer.</li>
+          <li><b>Sepete bakın</b> Alttaki sepet satırına dokunun. Barkodlu üründe adet −/+ ile değişir, satır sola kaydırılınca çıkar.
+            <b>Müşteriye göster</b> toplamı tam ekranda gösterir.</li>
+          <li><b>Kaydedin ya da gönderin</b> <b>Kaydet</b> sepeti kayıtlı sepetlere alır ve yeni sepet açar. <b>Gönder</b> ürünleri eczane programına yazar.</li>
+        </ol>
+        <figure class="telefon"><img src="img/ekran/sepet.webp" alt="Sepet ekranı: ürünler, etiketler ve toplam" loading="lazy"></figure>
+      </div>
+      <h3>Fiyat bak</h3>
+      <p>Yakınlaştırma çubuğunun solundaki <b>Fiyat bak</b> açıkken okutulan ürün sepete girmez; yalnızca fiyatı görünür, istenirse <b>Sepete ekle</b> ile eklenir.
+        Üstte çıkan arama satırına ürün adının bir kısmını yazarak kutu elde yokken de fiyat bulabilirsiniz.</p>
+      <h3>Kayıtlı sepetler ve gün sonu</h3>
+      <p>Kayıtlı sepetler gün başlıklarıyla listelenir. Sağa kaydırılan sepet bilgisayar bağlıysa gönderilir, sola kaydırılan silinir.
+        "Gün sonu · gönderilmeyen" kartı POS gün sonuyla karşılaştırmak için toplamı gösterir; paylaş düğmesi Excel dökümü verir.</p>
+      <h3>Listede olmayan ürün</h3>
+      <p>Kartta <b>Fiyat gir</b> ile fiyatı bir kez girin; aynı barkod sonraki okumalarda o fiyatla gelir.</p>
+      <div class="not-kutu bilgi">Uyarılar: miadı geçmiş kutu ve gönderilmemiş başka bir sepette olan karekod sepete eklenmeden önce sorulur ("Yine de ekle").</div>
+      <h3>Fiyat listesi</h3>
+      <p>Telefonda gömülü gelen fiyat listesi, telefon Wi-Fi'dayken kendiliğinden güncellenir; yalnızca değişen kayıtlar iner.
+        Ayarlar → Fiyat listesi'nde sürüm ve son kontrol görünür, <b>Şimdi güncelle</b> ile hemen güncellenir.</p>
+    </section>
+
+    <section class="konu" id="sayim">
+      <h2>Stok sayımı</h2>
+      <p class="giris-metni">Rafı telefonla tarayın, sayım eczane programının sayım ekranına doğrudan yazılsın. Dosya taşımaya gerek kalmaz.</p>
+      <div class="yanyana">
+        <ol class="sira">
+          <li><b>Sayım sekmesine geçin</b> Üstteki sayım adına dokunarak sayımlar arasında geçin; <b>Yeni</b> ile adlı yeni sayım başlatın ("Raf A", "Soğuk zincir").</li>
+          <li><b>Rafı tarayın</b> Kamerayı raf boyunca gezdirin. Her karekodlu kutu bir kez sayılır; aynı kutu tekrar görünse de sayı artmaz.</li>
+          <li><b>Programda sayım ekranını açın</b> Eczane programının sayım ekranını açın, imleç kod alanında olsun.</li>
+          <li><b>Gönderin</b> Gönder'e basın. Kodlar 100'lük parçalar hâlinde sırayla yazılır; ilerleme telefonda görünür, <b>Durdur</b> ile durdurulur.
+            Yazma yarıda kalırsa "Kaldığı yerden devam" seçilir.</li>
+        </ol>
+        <figure class="telefon"><img src="img/ekran/sayim.webp" alt="Sayım ekranı: raftaki kutular miada göre renkli çerçevelerle" loading="lazy"></figure>
+      </div>
+      <h3>Kameradaki renkler (son kullanma tarihine göre)</h3>
+      <div class="renkler">
+        <span style="--r: var(--gecmis)">Kırmızı: miadı geçmiş</span>
+        <span style="--r: var(--yakin)">Turuncu: miadı yakın</span>
+        <span style="--r: var(--okundu)">Yeşil: miadı uzun</span>
+        <span style="--r: #2563EB">Mavi: SKT yok</span>
+        <span style="--r: #C9CED6">Gri: sayılmaz</span>
+      </div>
+      <p>"Miadı yakın" süresi telefonda Ayarlar → <b>Miadı yakın sayılan süre</b>'den seçilir: 3, 6 ya da 12 ay.</p>
+      <ul>
+        <li>Yalnız seri numaralı karekod sayılır. Seri numarasız barkodlu ürünler sayıma girmez, kamerada gri görünür.</li>
+        <li>Sayım kaybolmaz: uygulama kapansa ya da telefon yeniden başlasa da kaldığı yerden sürer. Gönderdikten sonra da silinmez.</li>
+        <li>Alt çubuktaki kutu sayısına dokununca ayrıntı açılır: ürünler miadı en yakın olandan başlar; barkod, seri no ya da lot ile aranır.</li>
+        <li>Ayrıntıdaki "…" menüsünden sayım TXT olarak, miadı geçmiş ve yakın kutular Excel'de açılan rapor olarak paylaşılır; rafta beklenen kutu sayısı da (hedef adet) girilebilir.</li>
+      </ul>
+    </section>
+
+    <section class="konu" id="gecmis">
+      <h2>Geçmiş</h2>
+      <div class="yanyana">
+        <div>
+          <p class="giris-metni">Bilgisayara yazılan son 300 kod Geçmiş'te günlere göre durur. Tara ekranında Gönder'in yanındaki saat simgesine dokunarak açılır.</p>
+          <ul>
+            <li><b>Ara:</b> ürün adı, barkod, seri numarası ya da lot ile.</li>
+            <li><b>Tekrar gönder:</b> gün başlığındaki <b>Tekrar gönder</b> ya da satırı kaydırarak.</li>
+            <li><b>Seçerek gönder:</b> sağ üstteki seç düğmesiyle birden çok kod seçip gönderin.</li>
+          </ul>
+          <p>Geçmiş yalnızca telefonda tutulur; geçmişten yeniden gönderilen kodlar geçmişe ikinci kez eklenmez.</p>
+        </div>
+        <figure class="telefon"><img src="img/ekran/gecmis.webp" alt="Geçmiş ekranı: bugün 6 kod yazıldı" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="konu" id="ayarlar">
+      <h2>Ayarlar</h2>
+      <p class="giris-metni">Varsayılan ayarlar çoğu eczanede doğrudan çalışır. Kurulumda yalnızca önerilen değeri işaretli olanlara bakmanız yeterli.</p>
+      <h3>Bilgisayarda (EK simgesi → Ayarlar…)</h3>
+      <div class="tablo"><table>
+        <tr><th>Ayar</th><th>Ne yapar</th><th>Önerilen</th></tr>
+        <tr><td>Bilgisayar adı</td><td>Telefonda görünen ad; değişince telefona da yansır.</td><td class="oneri">Kasa</td></tr>
+        <tr><td>İzinli programlar</td><td>Kodların yalnız bu programa yazılmasını sağlar; başka pencere öndeyse yazmaz.</td><td class="oneri">Eczane programınız</td></tr>
+        <tr><td>Kodlar arası bekleme (ms)</td><td>Programın bir kodu işlemesi için tanınan süre. Kod kaçırılıyorsa artırın.</td><td class="oneri">400</td></tr>
+        <tr><td>Uyarı bekleme süresi (ms)</td><td>Kısa "lütfen bekleyin" pencerelerinin kapanması için en çok bekleme.</td><td class="oneri">3000</td></tr>
+        <tr><td>Sonek</td><td>Her koddan sonra basılacak tuş (Enter, Tab ya da yok).</td><td class="oneri">Enter</td></tr>
+        <tr><td>GS ayracı</td><td>Karekoddaki görünmez ayracın nasıl yazılacağı; eczanenin el okuyucusuna göre bir kez ayarlanır.</td><td class="oneri">Unicode</td></tr>
+        <tr><td>Baştaki FNC1'i sil</td><td>Karekod başındaki görünmez karakteri siler (el okuyucuları göndermez).</td><td class="oneri">Açık</td></tr>
+        <tr><td>Tuşlar arası bekleme (ms)</td><td>Karakter kaçıran yavaş bilgisayarlarda 5–10 deneyin.</td><td class="oneri">0</td></tr>
+        <tr><td>Port</td><td>Telefonun bağlandığı kapı. Değişirse telefonlar yeniden eşleştirilir.</td><td class="oneri">8765</td></tr>
+        <tr><td>Windows açılınca başlat</td><td>Bilgisayar açılınca EczaKod kendiliğinden çalışır.</td><td class="oneri">Açık</td></tr>
+        <tr><td>Yönetici olarak başlat</td><td>Yalnızca eczane programı yönetici olarak çalışıyorsa gerekir.</td><td class="oneri">Gerekirse</td></tr>
+      </table></div>
+      <p><b>Telefonlar sekmesi:</b> eşleşmiş telefonlar ve son bağlantı zamanları. Kaybolan telefonu seçip <b>Seçili telefonu kaldır</b> deyin; o telefon yeniden eşleştirilmeden bağlanamaz.</p>
+      <h3>Telefonda (Ayarlar sekmesi)</h3>
+      <div class="tablo"><table>
+        <tr><th>Ayar</th><th>Ne yapar</th><th>Önerilen</th></tr>
+        <tr><td>Bu telefon</td><td>Bilgisayarda görünen ad (ör. Kasa telefonu).</td><td class="oneri">Kasa telefonu</td></tr>
+        <tr><td>Ses / Titreşim</td><td>Her yeni okunan kodda kısa ses ve titreşim.</td><td class="oneri">Açık</td></tr>
+        <tr><td>Miadı geçmiş uyarısı</td><td>Kırmızı kart, uyarı sesi ve güçlü titreşim.</td><td class="oneri">Açık</td></tr>
+        <tr><td>Siyah zeminli karekod</td><td>Koyu ambalajlı ve ters renkli kodları da okur, biraz yavaşlatır.</td><td class="oneri">Kapalı</td></tr>
+        <tr><td>Gönderim</td><td>Anında: okur okumaz yazar. Biriktir: listeyi toplayıp Gönder ile yazar.</td><td class="oneri">Biriktir</td></tr>
+        <tr><td>Görüntü kalitesi</td><td>Yüksek, küçük ve uzak karekodlarda daha iyidir; eski telefonlarda yavaşlayabilir.</td><td class="oneri">Standart</td></tr>
+        <tr><td>Miadı yakın sayılan süre</td><td>Kamerada ve listelerde turuncu görünecek kutuların SKT sınırı.</td><td class="oneri">3 ay</td></tr>
+        <tr><td>Karanlık mod</td><td>Sistem: telefonun ayarına uyar.</td><td class="oneri">Sistem</td></tr>
+        <tr><td>Fiyat listesi</td><td>Sürüm, son kontrol, Şimdi güncelle; Yalnız Wi-Fi ve Ürün adlarını göster.</td><td class="oneri">Yalnız Wi-Fi</td></tr>
+        <tr><td>Verileri sıfırla</td><td>Geçmiş, sayımlar ya da sepetler bu telefondan silinir; bilgisayar etkilenmez.</td><td>–</td></tr>
+      </table></div>
+    </section>
+
+    <section class="konu" id="sorunlar">
+      <h2>Sorun giderme</h2>
+      <p class="giris-metni">Telefon, gönderim durursa nedenini yazar. Aynı mesaj bilgisayarda EK simgesi → <b>Günlük…</b>'te de görünür.</p>
+      <details><summary>Telefon "Bağlı değil" diyor</summary><div><ul>
+        <li>Bilgisayarda EK simgesi var mı? Yoksa Başlat menüsünden EczaKod'u açın.</li>
+        <li>Telefon ve bilgisayar aynı ağda mı? Misafir Wi-Fi'ı değil, bilgisayarın ağını kullanın.</li>
+        <li>EK simgesi → <b>Güvenlik duvarı izni ver…</b> → Evet.</li>
+        <li>Telefonda üstteki bilgisayar adına dokunup doğru bilgisayarın seçili olduğuna bakın.</li></ul></div></details>
+      <details><summary>"Eşleşme geçersiz" ya da "Bilgisayar bu telefonu tanımıyor"</summary><div>
+        Telefon bilgisayarın listesinden kaldırılmış. EK simgesi → <b>Telefon eşleştir…</b> ile QR'ı yeniden okutun.</div></details>
+      <details><summary>"Ön plandaki program izinli değil"</summary><div>
+        Gönder'e basıldığında önde eczane programı değil başka bir pencere vardı. Satış ekranını öne alıp yeniden gönderin.
+        Programda da bu uyarı çıkıyorsa Ayarlar → İzinli programlar'daki adı, Günlük'teki "Hedef pencere" satırında yazan adla değiştirin.</div></details>
+      <details><summary>"Yönetici olarak çalışıyor" uyarısı</summary><div>
+        Eczane programı yönetici olarak açılmış; Windows normal programların ona yazmasına izin vermez. EK simgesi → <b>Yönetici olarak yeniden başlat</b>.
+        Kalıcı olsun diye Ayarlar → Yönetici olarak başlat'ı işaretleyin.</div></details>
+      <details><summary>Gönderim yarıda durdu</summary><div>
+        Program bir uyarı penceresi açtıysa (miad, İTS uyarısı gibi) EczaKod güvenlik için durur. Uyarıyı kapatın, satış ekranına dönün ve Gönder'e yeniden basın;
+        yazılmış olanlar ikinci kez yazılmaz.</div></details>
+      <details><summary>Bazı kodlar programa eksik ya da yanlış düşüyor</summary><div>
+        Ayarlar → Kodlar arası bekleme'yi 400'den 600'e çıkarın. Seri numarası ile tarih birbirine karışıyorsa GS ayracı ayarı değişmelidir;
+        bu ayar eczanedeki el okuyucusunun gönderdiğine göre seçilir. Emin değilseniz <a href="iletisim.html">bize yazın</a>.</div></details>
+      <details><summary>"Okuyucu duraklatıldı" ya da "Başka telefonda"</summary><div>
+        Duraklatıldı: EK simgesi → Okuyucuyu duraklat işaretini kaldırın. Başka telefonda: aynı bilgisayara başka bir telefon bağlanmış; telefonda <b>Devral</b>'a basın.</div></details>
+      <details><summary>Karekod okunmuyor</summary><div><ul>
+        <li>Kutuyu kameraya paralel tutun; parlaklık yansıyorsa hafifçe eğin.</li>
+        <li>Ekranda karekoda dokunarak odaklayın, gerekirse yakınlaştırın.</li>
+        <li>Koyu zemine açık renkle basılmış karekodlar için Ayarlar → Siyah zeminli karekod'u açın.</li>
+        <li>Loş ortamda feneri açın.</li></ul></div></details>
+      <details><summary>Windows kurulumu engelliyor</summary><div>
+        "Windows kişisel bilgisayarınızı korudu" penceresinde <b>Ek bilgi</b> → <b>Yine de çalıştır</b>. Kurumsal bilgisayarlarda yönetici izni gerekebilir.</div></details>
+    </section>
+
+    <section class="konu" id="guncelleme">
+      <h2>Güncelleme ve kaldırma</h2>
+      <h3>Güncelleme</h3>
+      <p>Aynı indirme bağlantısından yeni kurulumu indirip çalıştırın. Eski sürümün üzerine kurulur; eşleşmiş telefonlar ve ayarlar korunur.
+        Telefon uygulaması mağazadan kendiliğinden güncellenir.</p>
+      <h3>Kaldırma</h3>
+      <p>Windows Ayarlar → Uygulamalar → EczaKod → Kaldır. Güvenlik duvarı izinleri de kaldırılır. Eşleşmeler ve ayarlar <code>%APPDATA%\EczaKod</code> klasöründe kalır;
+        tamamen silmek için bu klasörü de silin.</p>
+      <div class="not-kutu bilgi">Hasta ve reçete bilgisi toplanmaz. Kamera görüntüsü yalnızca telefonda işlenir; kodlar internete değil, yalnızca eczanedeki bilgisayara şifreli bağlantıyla gider.
+        Ayrıntılar: <a href="gizlilik.html">Gizlilik politikası</a>.</div>
+    </section>
+  </div>
+</div>
+</main>
+
+<footer class="alt">
+  <div class="ic">
+    <div>
+      <img src="img/logo-dark.png" alt="EczaKod">
+      <p>Eczaneler için toplu karekod okuyucu.</p>
+    </div>
+    <div><h3>Ürün</h3><ul><li><a href="./#ozellikler">Özellikler</a></li><li><a href="./#indir">İndir</a></li><li><a href="./#sss">Sık sorulanlar</a></li></ul></div>
+    <div><h3>Yardım</h3><ul><li><a href="kurulum.html">Kurulum ve kullanım</a></li><li><a href="kurulum.html#sorunlar">Sorun giderme</a></li><li><a href="iletisim.html">İletişim</a></li></ul></div>
+    <div><h3>Kurumsal</h3><ul><li><a href="gizlilik.html">Gizlilik politikası</a></li><li><a href="mailto:destek@eczakod.com">destek@eczakod.com</a></li></ul></div>
+    <p class="telif">© 2026 EczaKod. Görsellerdeki ürün adları ve fiyatlar örnektir; seri numaraları ve tarihler uydurmadır.</p>
+  </div>
+</footer>
+<script src="js/site.js" defer></script>
+</body>
+</html>
