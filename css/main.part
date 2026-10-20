@@ -86,6 +86,8 @@ kbd { background: var(--kagit); border: 1px solid var(--cizgi); border-bottom-wi
 .alt ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .alt a { color: #E4E7EB; text-decoration: none; }
 .alt a:hover { color: #fff; text-decoration: underline; }
+.alt .sosyal { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: #E4E7EB; text-decoration: none; font-weight: 500; }
+.alt .sosyal:hover { color: #fff; }
 .alt .telif { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.1); padding-top: 22px; font-size: 13.5px; color: #8C939F; }
 
 /* Sayfa başlığı (iç sayfalar) */
