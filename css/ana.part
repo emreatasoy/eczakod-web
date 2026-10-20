@@ -1,18 +1,24 @@
 
 /* ---------- Ana sayfa ---------- */
-.giris { padding: 56px 0 88px; overflow: hidden; }
+/* Koyu zemin, çok soluk karekod modülleri; telefonun arkasında hafif kırmızı ışık */
+.giris { padding: 64px 0 96px; overflow: hidden; color: #C9CED6;
+  background: radial-gradient(ellipse 60% 70% at 78% 45%, rgba(204,21,42,.26), transparent 70%), url(../img/desen.svg), var(--murekkep); }
+.giris h1 { color: #fff; }
+.giris .telefon { box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 30px 60px -20px rgba(0,0,0,.7); }
+.giris .dugme.cerceve { border-color: rgba(255,255,255,.5); color: #fff; }
+.giris .dugme.cerceve:hover { background: #fff; color: var(--murekkep); border-color: #fff; }
 .giris .ic { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr); gap: 48px; align-items: center; }
 .giris h1 { max-width: 20ch; font-size: clamp(34px, 3.7vw, 50px); }
-.giris .ozet { font-size: 19.5px; line-height: 1.55; max-width: 46ch; margin: 22px 0 30px; }
+.giris .ozet { font-size: 19.5px; line-height: 1.55; max-width: 46ch; margin: 22px 0 30px; color: #C9CED6; }
 .giris .eylem { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.giris .not { font-size: 14.5px; color: var(--soluk); margin-top: 16px; }
+.giris .not { font-size: 14.5px; color: #969DA9; margin-top: 16px; }
 
 /* Sahne: telefon okur, program penceresine satır satır yazılır */
 .sahne { position: relative; display: grid; grid-template-columns: 216px minmax(0, 1fr); align-items: center; }
 .sahne .telefon { position: relative; z-index: 2; max-width: 216px; transform: rotate(-3deg); }
 /* Pencere telefonun arkasına biraz girer; içerik o payı boş bırakır */
 .program { position: relative; margin-left: -16px; background: #fff; border: 1px solid var(--cizgi); border-radius: 14px; overflow: hidden;
-  box-shadow: 0 30px 70px -30px rgba(33,37,42,.45); font-size: 13px; --pay: 72px; }
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6); border-color: transparent; font-size: 13px; --pay: 72px; }
 .program .giris-alani { margin-left: var(--pay); }
 .program th:first-child, .program td:first-child { padding-left: var(--pay); }
 .program .baslik-cubugu { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #F4F5F7; border-bottom: 1px solid var(--cizgi);
@@ -34,9 +40,9 @@
 .program tbody tr[hidden] { display: table-row; visibility: hidden; }
 .program .toplam { display: flex; justify-content: space-between; padding: 12px 14px; font-weight: 600; color: var(--murekkep); background: #FAFAFB; }
 .program .toplam span:last-child { font-variant-numeric: tabular-nums; font-size: 16px; }
-.sahne .baglanti { position: absolute; left: 36px; bottom: -26px; z-index: 3; display: flex; align-items: center; gap: 8px; background: var(--murekkep); color: #fff;
+.sahne .baglanti { position: absolute; left: 36px; bottom: -26px; z-index: 3; display: flex; align-items: center; gap: 8px; background: #fff; color: var(--murekkep);
   font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px; box-shadow: 0 10px 24px -8px rgba(0,0,0,.4); }
-.sahne .baglanti i { width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; }
+.sahne .baglanti i { width: 8px; height: 8px; border-radius: 50%; background: var(--okundu); }
 .program .baslik-cubugu, .program .toplam { padding-left: var(--pay); }
 
 /* Bölüm düzeni */
