@@ -157,6 +157,8 @@ kbd { background: var(--kagit); border: 1px solid var(--cizgi); border-bottom-wi
 .giris .ozet { font-size: 19.5px; line-height: 1.55; max-width: 46ch; margin: 22px 0 30px; color: #C9CED6; }
 .giris .eylem { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .giris .not { font-size: 14.5px; color: #969DA9; margin-top: 16px; }
+.giris .magaza { height: 48px; min-width: 0; background: #000; border: 1px solid #4B5260; }
+.giris .magaza:hover { border-color: #8C939F; }
 
 /* Sahne: telefon okur, program penceresine satır satır yazılır */
 .sahne { position: relative; display: grid; grid-template-columns: 216px minmax(0, 1fr); align-items: center; }
