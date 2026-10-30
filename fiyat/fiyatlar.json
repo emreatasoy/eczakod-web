@@ -1,14 +1,14 @@
 {
   "format": "eczakod-fiyat",
   "version": 1,
-  "listDate": "2026-10-19",
-  "generatedAt": "2026-10-19T13:10:06+03:00",
+  "listDate": "2026-10-30",
+  "generatedAt": "2026-10-30T14:35:16+03:00",
   "currency": "TRY",
   "count": 135515,
   "sources": [
     {
       "name": "ECZAKOD",
-      "listDate": "2026-10-19",
+      "listDate": "2026-10-30",
       "count": 135515
     }
   ],

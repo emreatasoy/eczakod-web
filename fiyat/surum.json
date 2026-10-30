@@ -1,8 +1,8 @@
 {
   "format": "eczakod-fiyat-surum",
   "version": 1,
-  "listDate": "2026-10-19",
-  "generatedAt": "2026-10-19T13:10:06+03:00",
+  "listDate": "2026-10-30",
+  "generatedAt": "2026-10-30T14:35:16+03:00",
   "count": 135515,
   "kinds": {
     "medikal": 40464,
@@ -13,7 +13,7 @@
     "veteriner": 1433,
     "mama": 888
   },
-  "sha256": "c965f369eafb0ae8f21f9cda1c831e2fb87335afd154293b1fe52815c585aaac",
+  "sha256": "6bb340fa605b1448e465c6110069ebd75ca4289463f25b0e8bbda9ab00a1d5e5",
   "file": "fiyatlar.json",
   "changes": {
     "added": 0,
