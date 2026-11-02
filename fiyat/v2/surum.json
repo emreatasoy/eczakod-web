@@ -1,23 +1,23 @@
 {
   "format": "eczakod-fiyat-surum",
   "version": 2,
-  "listVersion": 3,
-  "listDate": "2026-10-19",
-  "generatedAt": "2026-10-30T14:35:16+03:00",
-  "count": 135515,
-  "active": 128941,
+  "listVersion": 4,
+  "listDate": "2026-11-02",
+  "generatedAt": "2026-11-02T13:32:31+03:00",
+  "count": 217509,
+  "active": 209242,
   "kinds": {
-    "medikal": 40464,
-    "kozmetik": 39178,
-    "ilac": 13758,
-    "diger": 5397,
-    "takviye": 27823,
-    "veteriner": 1433,
-    "mama": 888
+    "medikal": 42790,
+    "kozmetik": 111951,
+    "ilac": 17054,
+    "diger": 5993,
+    "takviye": 28941,
+    "veteriner": 1464,
+    "mama": 1049
   },
   "changes": {
-    "version": 3,
-    "count": 7365
+    "version": 4,
+    "count": 86492
   },
   "eqSince": 3
 }
