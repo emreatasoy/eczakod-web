@@ -19,5 +19,10 @@
     "version": 4,
     "count": 86492
   },
-  "eqSince": 3
+  "eqSince": 3,
+  "full": {
+    "file": "liste.sqlite.gz",
+    "bytes": 6018835,
+    "sha256": "70e96d03e5d0d3313a61bc380d6684ae4fd0632ee087b79cd99dab9caa10b884"
+  }
 }
