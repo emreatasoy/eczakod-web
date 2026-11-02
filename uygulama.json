@@ -1,0 +1,12 @@
+{
+  "ios": {
+    "son": "1.1.0",
+    "en_dusuk": "1.0.0"
+  },
+  "android": {
+    "son": "1.2.0",
+    "en_dusuk": "1.0.0",
+    "adres": "https://play.google.com/store/apps/details?id=com.eczakod.app"
+  },
+  "not": "Eşdeğer ilaçlar ve toplu gönderme geldi."
+}
