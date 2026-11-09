@@ -345,6 +345,25 @@ ol.sira > li > b:first-child { display: block; font-size: 17.5px; margin-bottom:
 .yanyana .telefon img { border-radius: 22px; }
 
 /* Görev çubuğu ve sağ tık menüsü canlandırması */
+/* Windows uyarısı anlatımı: kurulumda en çok takılınan yer */
+.ss-adimlar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 16px 0; scroll-margin-top: 90px; }
+.ss-adimlar figure { margin: 0; min-width: 0; display: flex; flex-direction: column; }
+.ss-adimlar figcaption { display: flex; align-items: center; gap: 8px; font-size: 15.5px; margin-bottom: 8px; color: var(--murekkep); }
+.ss-adimlar figcaption span { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--kirmizi); color: #fff; font: 800 13px/24px var(--govde); text-align: center; }
+.ss-pencere { position: relative; flex: 1; display: flex; flex-direction: column; background: #6F1AC9; color: #fff; padding: 18px 16px 14px; font: 13px/1.4 "Segoe UI", sans-serif; box-shadow: 0 10px 26px rgba(33,37,42,.22); }
+.ss-pencere strong { display: block; color: #fff; font-size: 18px; font-weight: 400; line-height: 1.25; padding-right: 22px; margin-bottom: 10px; }
+.ss-pencere p { margin: 0 0 10px; }
+.ss-pencere .ss-bilgi { margin-bottom: 14px; }
+.ss-kapat { position: absolute; top: 8px; right: 10px; font-style: normal; font-size: 13px; opacity: .85; }
+.ss-satir { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.ss-pencere em { font: 700 13px/1.2 var(--govde); font-style: normal; color: #FFE45C; white-space: nowrap; }
+.ss-pencere small { font-size: 12.5px; color: #fff; white-space: nowrap; }
+.ss-pencere .ss-hedef { outline: 3px solid #FFE45C; outline-offset: 3px; }
+.ss-satir .ss-hedef { font-size: 14px; }
+.ss-dugmeler { margin-top: auto; display: flex; justify-content: flex-end; align-items: flex-end; gap: 8px; }
+.ss-sutun { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+.ss-dugmeler span { background: #E8E8EC; color: #111; padding: 5px 12px; white-space: nowrap; }
+@media (max-width: 620px) { .ss-adimlar { grid-template-columns: minmax(0, 1fr); } }
 .tepsi { display: inline-flex; align-items: center; gap: 14px; background: #1F2328; color: #E5E7EB; padding: 10px 16px; border-radius: 10px; font-size: 13px; margin: 8px 0 4px; }
 .tepsi .ek { width: 20px; height: 20px; border-radius: 4px; background: var(--kirmizi); color: #fff; font: 800 10px/20px var(--govde); text-align: center; position: relative; }
 .tepsi .ek::after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; border: 2px solid #1F2328; }
