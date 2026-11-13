@@ -439,3 +439,4 @@ ol.sira > li > b:first-child { display: block; font-size: 17.5px; margin-bottom:
 .ozet-kartlar b { display: block; font-size: 16px; margin-bottom: 4px; }
 .ozet-kartlar span { font-size: 14.5px; color: var(--metin); line-height: 1.45; display: block; }
 @media (max-width: 760px) { .ozet-kartlar { grid-template-columns: 1fr 1fr; } }
+.icerik-sayfa { padding-top: 56px; padding-bottom: 96px; }
