@@ -64,6 +64,7 @@
       <li><a href="#gecmis">Geçmiş</a></li>
       <li class="grup">Ayarlar ve yardım</li>
       <li><a href="#ayarlar">Ayarlar</a></li>
+      <li><a href="#antivirus">Antivirüs uyarısı</a></li>
       <li><a href="#sorunlar">Sorun giderme</a></li>
       <li><a href="#guncelleme">Güncelleme ve kaldırma</a></li>
     </ol>
@@ -103,7 +104,8 @@
             </figure>
           </div>
           Yanlışlıkla <b>Çalıştırma</b>'ya bastıysanız indirdiğiniz dosyaya yeniden çift tıklayın, pencere tekrar açılır.
-          Ardından "Bu uygulamanın cihazınızda değişiklik yapmasına izin veriyor musunuz?" sorusuna <b>Evet</b> deyin.</li>
+          Ardından "Bu uygulamanın cihazınızda değişiklik yapmasına izin veriyor musunuz?" sorusuna <b>Evet</b> deyin.
+          Antivirüs programınız uyarı verirse: <a href="#antivirus">Antivirüs uyarı veriyorsa</a>.</li>
         <li><b>Kurulum sihirbazını tamamlayın</b>
           <b>Windows açılınca EczaKod'u başlat</b> seçeneğini işaretli bırakın; bilgisayar her açıldığında EczaKod kendiliğinden çalışır. Kur → Son.</li>
         <li><b>Güvenlik duvarı izni kendiliğinden verilir</b>
@@ -315,6 +317,38 @@
       </table></div>
     </section>
 
+    <section class="konu" id="antivirus">
+      <h2>Antivirüs uyarı veriyorsa</h2>
+      <p class="giris-metni">Bazı antivirüs programları EczaKod'u kurulumda ya da ilk açılışta "şüpheli" ya da "tehlikeli" olarak gösterebilir.
+        Bu bir yanlış alarmdır: EczaKod'un yaptığı işler, antivirüslerin zararlı programlarda aradığı davranışlara benzer.</p>
+      <h3>Neden uyarı veriyor?</h3>
+      <ul>
+        <li><b>Klavyeye yazıyor:</b> telefondan gelen karekodları eczane programına, el tipi barkod okuyucu gibi klavyeden yazar.</li>
+        <li><b>Windows açılınca başlıyor:</b> her gün yeniden açmanız gerekmesin diye.</li>
+        <li><b>Ağdan bağlantı kabul ediyor:</b> yalnızca eczanenizdeki eşleşmiş telefondan, şifreli bağlantıyla.</li>
+        <li><b>Yeni bir program:</b> antivirüsler az indirilen ve dijital imzası olmayan programlara daha temkinli yaklaşır.</li>
+      </ul>
+      <div class="not-kutu bilgi">EczaKod başka programların dosyalarına dokunmaz, bir şey silmez, hasta ya da reçete bilgisi görmez ve internete
+        bir şey göndermez. Kurulum dosyasını yalnızca bu sitedeki <b>Windows için indir</b> bağlantısından indirin.</div>
+      <h3>Kaspersky</h3>
+      <ol class="sira">
+        <li><b>Karantinaya alındıysa geri yükleyin</b> Kaspersky'de <b>Karantina</b> bölümünü açın, EczaKod dosyasını seçip <b>Geri yükle</b> deyin.
+          Başka bir dosyayı geri yüklemeyin.</li>
+        <li><b>EczaKod'u istisnalara ekleyin</b> <b>Ayarlar → Güvenlik ayarları → Tehditler ve İstisnalar → İstisnaları yönet → Ekle</b> yolunu izleyin
+          ve <code>C:\Program Files\EczaKod</code> klasörünü seçin. Menü adları Kaspersky sürümüne göre biraz değişebilir.</li>
+        <li><b>EczaKod'u yeniden açın</b> Başlat menüsünden EczaKod'u açın; saatin yanında kırmızı EK simgesi görünür.</li>
+      </ol>
+      <h3>Windows Güvenliği (Microsoft Defender)</h3>
+      <ol class="sira">
+        <li><b>Engellendiyse izin verin</b> <b>Windows Güvenliği → Virüs ve tehdit koruması → Koruma geçmişi</b>'nde EczaKod kaydını açıp <b>İzin ver</b> deyin.</li>
+        <li><b>Klasörü dışlamalara ekleyin</b> <b>Virüs ve tehdit koruması ayarları → Ayarları yönet → Dışlamalar → Dışlama ekle → Klasör</b>
+          ile <code>C:\Program Files\EczaKod</code> klasörünü seçin.</li>
+      </ol>
+      <p>Başka bir antivirüs kullanıyorsanız adımlar benzerdir: önce karantinadan geri yükleyin, sonra <code>C:\Program Files\EczaKod</code>
+        klasörünü istisnalara ekleyin. Kurumsal bilgisayarlarda bu ayarı bilgi işlem sorumlusu yapabilir.
+        Takılırsanız antivirüsün uyarı ekranının fotoğrafıyla <a href="iletisim.html">bize yazın</a>; birlikte çözelim.</p>
+    </section>
+
     <section class="konu" id="sorunlar">
       <h2>Sorun giderme</h2>
       <p class="giris-metni">Telefon, gönderim durursa nedenini yazar. Aynı mesaj bilgisayarda EK simgesi → <b>Günlük…</b>'te de görünür.</p>
@@ -344,6 +378,8 @@
         <li>Ekranda karekoda dokunarak odaklayın, gerekirse yakınlaştırın.</li>
         <li>Koyu zemine açık renkle basılmış karekodlar için Ayarlar → Siyah zeminli karekod'u açın.</li>
         <li>Loş ortamda feneri açın.</li></ul></div></details>
+      <details><summary>Antivirüs EczaKod'u engelliyor ya da siliyor</summary><div>
+        Yanlış alarm; karantinadan geri yükleyip EczaKod klasörünü istisnalara ekleyin: <a href="#antivirus">adım adım anlatım</a>.</div></details>
       <details><summary>Windows kurulumu engelliyor</summary><div>
         "Windows kişisel bilgisayarınızı korudu" penceresinde <b>Ek bilgi</b> → <b>Yine de çalıştır</b> (<a href="#windows-uyarisi">görselli anlatım</a>). Kurumsal bilgisayarlarda yönetici izni gerekebilir.</div></details>
     </section>
