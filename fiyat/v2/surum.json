@@ -1,28 +1,29 @@
 {
   "format": "eczakod-fiyat-surum",
   "version": 2,
-  "listVersion": 4,
-  "listDate": "2026-11-02",
-  "generatedAt": "2026-11-02T13:32:31+03:00",
-  "count": 217509,
-  "active": 209242,
+  "listVersion": 5,
+  "listDate": "2026-11-23",
+  "generatedAt": "2026-11-23T10:55:14+03:00",
+  "count": 218490,
+  "active": 210209,
   "kinds": {
-    "medikal": 42790,
-    "kozmetik": 111951,
-    "ilac": 17054,
-    "diger": 5993,
-    "takviye": 28941,
+    "kozmetik": 112553,
+    "medikal": 42938,
+    "ilac": 17057,
+    "diger": 6017,
+    "takviye": 29128,
     "veteriner": 1464,
-    "mama": 1049
+    "mama": 1052
   },
   "changes": {
-    "version": 4,
-    "count": 86492
+    "version": 5,
+    "count": 1928,
+    "bytes": 445080
   },
-  "eqSince": 3,
   "full": {
     "file": "liste.sqlite.gz",
-    "bytes": 6018835,
-    "sha256": "70e96d03e5d0d3313a61bc380d6684ae4fd0632ee087b79cd99dab9caa10b884"
-  }
+    "bytes": 6048623,
+    "sha256": "cf7bdf565bc6afc7b27d1a30cb34c0674fd1869af770806b5beacbb8d4706aaa"
+  },
+  "eqSince": 3
 }
